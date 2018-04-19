@@ -34,7 +34,7 @@
 
                 $(element).rules('add', ruleOpts);
 
-            }, 0);
+            }, 250);
         }
     };
 
