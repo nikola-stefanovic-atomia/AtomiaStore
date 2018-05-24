@@ -1089,7 +1089,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 2.0.
+        ///   Looks up a localized string similar to 3.0.
         /// </summary>
         internal static string NoridVersion {
             get {
