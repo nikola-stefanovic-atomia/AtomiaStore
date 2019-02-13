@@ -145,6 +145,10 @@ namespace Atomia.Store.Themes.Default
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         protected void Application_PreSendRequestHeaders(object sender, EventArgs e)
         {
+            HttpContext.Current.Response.Headers.Remove("X-Powered-By");
+            HttpContext.Current.Response.Headers.Remove("X-AspNet-Version");
+            HttpContext.Current.Response.Headers.Remove("X-AspNetMvc-Version");
+            HttpContext.Current.Response.Headers.Remove("Server");
             this.HandlerClass.Application_PreSendRequestHeaders(sender, e);
         }
 
