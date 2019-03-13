@@ -66,7 +66,7 @@ namespace Atomia.Store.Payment.CCPayment
 
             this.yearOptions = yearOptions;
         }
-        
+
         public override string Id
         {
             get { return "CCPayment"; }
@@ -83,7 +83,7 @@ namespace Atomia.Store.Payment.CCPayment
         /// The security code, aka CSC/CVV/CVC/CID.
         /// </summary>
         [AtomiaRequired("Common,ErrorEmptyField")]
-        [AtomiaRegularExpression("[0-9]{3,4}", "Common,ErrorInvalidCardSecurityCode", false)]
+        [AtomiaRegularExpression("^$|^[0-9]{3,4}$", "Common,ErrorInvalidCardSecurityCode", false)]
         public string CardSecurityCode { get; set; }
 
         /// <summary>
