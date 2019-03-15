@@ -319,7 +319,7 @@ namespace Atomia.Store.AspNetMvc.Models
         /// Customer provided national corporate identification / registration number for the company
         /// </summary>
         [AtomiaRequired("Common,ErrorEmptyField")]
-        [CustomerValidation(CustomerValidationType.CompanyIdentityNumber, "CustomerValidation,CompanyIdentityNumber", CountryField = "Country", ProductField = "CartItems.ArticleNumber", ResellerIdField = "ResellerId")]
+        [CustomerValidation(CustomerValidationType.IdentityNumber, "CustomerValidation,CompanyIdentityNumber", CountryField = "Country", ProductField = "CartItems.ArticleNumber", ResellerIdField = "ResellerId")]
         public virtual string IdentityNumber { get; set; }
 
         /// <summary>
