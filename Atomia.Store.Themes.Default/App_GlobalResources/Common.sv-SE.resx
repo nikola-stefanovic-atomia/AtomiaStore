@@ -616,7 +616,7 @@
     <value>Felaktigt domännamn</value>
   </data>
   <data name="ErrorTermNotChecked" xml:space="preserve">
-    <value>ErrorTermNotChecked</value>
+    <value>Du måste läsa och godkänna alla avtal.</value>
   </data>
   <data name="ErrorUsernameNotAvailable" xml:space="preserve">
     <value>Användarnamnet är inte tillgängligt.</value>

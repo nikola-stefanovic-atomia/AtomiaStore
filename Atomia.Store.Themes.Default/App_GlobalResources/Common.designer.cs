@@ -738,7 +738,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ErrorTermNotChecked.
+        ///   Looks up a localized string similar to You must confirm the Terms of Service..
         /// </summary>
         internal static string ErrorTermNotChecked {
             get {

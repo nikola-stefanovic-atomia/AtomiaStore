@@ -22,9 +22,7 @@ namespace Atomia.Store.AspNetMvc.Models
         /// <summary>
         /// Customer provided confirmation for the terms of service.
         /// </summary>
-        // FIXME: Add this back when WebFramePlugin references can be updated to include the new public order api references
-        //[AtomiaConfirmation("Common,ErrorTermNotChecked")]
-        [Range(typeof(bool), "true", "true", ErrorMessage = "You must confirm the Terms of Service.")]
+        [AtomiaConfirmation("Common,ErrorTermNotChecked")]
         public bool Confirm { get; set; }
     }
 }

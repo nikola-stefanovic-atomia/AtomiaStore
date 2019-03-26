@@ -616,7 +616,7 @@
     <value>Invalid domain name</value>
   </data>
   <data name="ErrorTermNotChecked" xml:space="preserve">
-    <value>ErrorTermNotChecked</value>
+    <value>You must confirm the Terms of Service.</value>
   </data>
   <data name="ErrorUsernameNotAvailable" xml:space="preserve">
     <value>The username is not available</value>
