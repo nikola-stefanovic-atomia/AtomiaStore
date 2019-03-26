@@ -728,4 +728,7 @@
   <data name="WarningTitle_HostingPackageMissing" xml:space="preserve">
     <value>Värdpaket saknas</value>
   </data>
+  <data name="IdentityNumber" xml:space="preserve">
+    <value>Identitetsnummer</value>
+  </data>
 </root>

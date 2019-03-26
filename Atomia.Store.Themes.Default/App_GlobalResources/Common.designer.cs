@@ -927,6 +927,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ID number.
+        /// </summary>
+        internal static string IdentityNumber {
+            get {
+                return ResourceManager.GetString("IdentityNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Includes.
         /// </summary>
         internal static string Includes {

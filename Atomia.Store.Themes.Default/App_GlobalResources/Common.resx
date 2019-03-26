@@ -737,4 +737,7 @@
   <data name="Create" xml:space="preserve">
     <value>Create</value>
   </data>
+  <data name="IdentityNumber" xml:space="preserve">
+    <value>ID number</value>
+  </data>
 </root>
