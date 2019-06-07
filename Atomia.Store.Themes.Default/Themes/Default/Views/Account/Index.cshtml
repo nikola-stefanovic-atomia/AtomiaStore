@@ -1,5 +1,6 @@
 ﻿@using Atomia.Store.AspNetMvc.Models
 @model Atomia.Store.AspNetMvc.Models.DefaultAccountViewModel
+@using Atomia.Store.ExistingCustomer.Models;
 
 @{
     Layout = "~/Themes/Default/Views/_OrderFlowLayout.cshtml";
@@ -9,41 +10,47 @@
 
 <div class="settingsboxinner">
 
-    <form action="@this.Url.Action("Index", routeValues)" id="Account_Form" method="post" novalidate="novalidate">
+
+    @{ Html.RenderPartial("_CustomerOrderAccountSelector"); } 
+
+    @{ Html.RenderPartial("_ExistingCustomer", new CustomerLoginModel()); }
+
     @{
-        Html.RenderPartial("_ValidationSummary", ViewData.ModelState);
-
-        @Html.AntiForgeryToken();
-
-        Html.RenderPartial(Model.MainContact.PartialViewName, Model.MainContact, new ViewDataDictionary
+        using (Html.BeginForm("Index", "Account", routeValues, FormMethod.Post, new { id="Account_Form", data_bind = "slideVisible: customerOrderAccountSelector.newAccountFormVisible", style = "display: none;" }))
         {
-            TemplateInfo = new TemplateInfo { HtmlFieldPrefix = Model.MainContact.Id }
-        });
+            Html.RenderPartial("_ValidationSummary", ViewData.ModelState);
 
-        Html.RenderPartial(Model.BillingContact.PartialViewName, Model.BillingContact, new ViewDataDictionary
-        {
-            TemplateInfo = new TemplateInfo { HtmlFieldPrefix = Model.BillingContact.Id }
-        });
+            @Html.AntiForgeryToken();
 
-        Html.RenderPartial(Model.WhoisContact.PartialViewName, Model.WhoisContact, new ViewDataDictionary
-        {
-            TemplateInfo = new TemplateInfo { HtmlFieldPrefix = Model.WhoisContact.Id }
-        });
+            Html.RenderPartial(Model.MainContact.PartialViewName, Model.MainContact, new ViewDataDictionary
+            {
+                TemplateInfo = new TemplateInfo { HtmlFieldPrefix = Model.MainContact.Id }
+            });
 
-        Html.RenderPartial("_NoridDeclaration", Model.NoridDeclaration, new ViewDataDictionary
-        {
-            TemplateInfo = new TemplateInfo { HtmlFieldPrefix = Model.NoridDeclaration.Id }
-        });
+            Html.RenderPartial(Model.BillingContact.PartialViewName, Model.BillingContact, new ViewDataDictionary
+            {
+                TemplateInfo = new TemplateInfo { HtmlFieldPrefix = Model.BillingContact.Id }
+            });
 
-        Html.HiddenFor(m => m.OtherBillingContact, new { data_bind = "value: otherBillingContact" });
+            Html.RenderPartial(Model.WhoisContact.PartialViewName, Model.WhoisContact, new ViewDataDictionary
+            {
+                TemplateInfo = new TemplateInfo { HtmlFieldPrefix = Model.WhoisContact.Id }
+            });
 
-        Html.HiddenFor(m => m.OtherWhoisContact, new { data_bind = "value: otherWhoisContact" });
+            Html.RenderPartial("_NoridDeclaration", Model.NoridDeclaration, new ViewDataDictionary
+            {
+                TemplateInfo = new TemplateInfo { HtmlFieldPrefix = Model.NoridDeclaration.Id }
+            });
 
-        Html.RenderPartial("_ExtraForms", Model);
+            Html.HiddenFor(m => m.OtherBillingContact, new { data_bind = "value: otherBillingContact" });
 
-        Html.RenderPartial("_Actions", Model);
-    }
-    </form>
+            Html.HiddenFor(m => m.OtherWhoisContact, new { data_bind = "value: otherWhoisContact" });
+
+            Html.RenderPartial("_ExtraForms", Model);
+
+            Html.RenderPartial("_Actions", Model);
+        }
+    } 
 </div>
 
 @section scripts {

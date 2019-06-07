@@ -289,7 +289,9 @@
     <Content Include="Themes\Default\Scripts\atomia\atomia.viewmodels.campaign.js" />
     <Content Include="Themes\Default\Scripts\atomia\atomia.viewmodels.checkout.js" />
     <Content Include="Themes\Default\Scripts\atomia\atomia.viewmodels.currencyselector.js" />
+    <Content Include="Themes\Default\Scripts\atomia\atomia.viewmodels.customerorderaccountselector.js" />
     <Content Include="Themes\Default\Scripts\atomia\atomia.viewmodels.noriddeclaration.js" />
+    <Content Include="Themes\Default\Scripts\atomia\atomia.viewmodels.existingcustomer.js" />
     <Content Include="Themes\Default\Scripts\atomia\atomia.viewmodels.paymentprofile.js" />
     <Content Include="Themes\Default\Scripts\atomia\atomia.viewmodels.modalmixin.js" />
     <Content Include="Themes\Default\Scripts\atomia\atomia.viewmodels.notification.js" />
@@ -346,8 +348,14 @@
     <Content Include="Themes\Default\Views\Shared\_CurrencySelector.cshtml" />
     <Content Include="Themes\Default\Views\Account\_NoridDeclaration.cshtml" />
     <Content Include="Themes\Default\Views\Account\NoridTermsOfService.cshtml" />
+    <Content Include="Themes\Default\Views\Account\_ExistingCustomer.cshtml" />
+    <Content Include="Themes\Default\Views\Account\_CustomerOrderAccountSelector.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Atomia.Store.ExistingCustomer\Atomia.Store.ExistingCustomer.csproj">
+      <Project>{f62bc036-d0d2-4a0c-a888-4857ecfea6fe}</Project>
+      <Name>Atomia.Store.ExistingCustomer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Atomia.Store.PublicOrderHandlers\Atomia.Store.PublicOrderHandlers.csproj">
       <Project>{552f114f-55f2-4126-98ec-21f98896ba0a}</Project>
       <Name>Atomia.Store.PublicOrderHandlers</Name>

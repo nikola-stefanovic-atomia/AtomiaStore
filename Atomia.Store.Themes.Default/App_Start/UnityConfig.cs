@@ -1,16 +1,16 @@
+using Atomia.Store.AspNetMvc.Helpers;
 using Atomia.Store.AspNetMvc.Models;
 using Atomia.Store.AspNetMvc.Ports;
 using Atomia.Store.Core;
+using Atomia.Store.ExistingCustomer.Adapters;
 using Atomia.Store.PublicBillingApi;
 using Atomia.Store.PublicBillingApi.Handlers;
-using Microsoft.Practices.Unity;
-using System.Collections.Generic;
-using System.Web.Mvc;
-using System.Configuration;
-using System;
-
-using Atomia.Web.Plugin.ProductsProvider;
 using Atomia.Web.Plugin.ShopNameProvider;
+using Microsoft.Practices.Unity;
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Web.Mvc;
 
 namespace Atomia.Store.Themes.Default
 {
@@ -29,6 +29,8 @@ namespace Atomia.Store.Themes.Default
             RegisterPaymentMethods(container);
 
             RegisterOrderHandling(container);
+
+            RegisterExistingCustomerOrdering(container);
 
             // Un-comment to use fake static data instead of public order api.
             // RegisterFakeAdapters(container);
@@ -55,6 +57,7 @@ namespace Atomia.Store.Themes.Default
                 new InjectionConstructor(new ResolvedParameter<ICountryProvider>("apiProvider")));
             container.RegisterType<IResellerProvider, Atomia.Store.PublicBillingApi.Adapters.ResellerProvider>();
             container.RegisterType<ILanguageProvider, Atomia.Store.PublicBillingApi.Adapters.LanguageProvider>();
+            container.RegisterType<IPackageProvider, Atomia.Store.PublicBillingApi.Adapters.PackageProvider>();
             container.RegisterType<ICurrencyProvider, Atomia.Store.PublicBillingApi.Adapters.CurrencyProvider>();
             container.RegisterType<IProductProvider, Atomia.Store.PublicBillingApi.Adapters.ProductProvider>();
             container.RegisterType<IPaymentMethodsProvider, Atomia.Store.PublicBillingApi.Adapters.PaymentMethodsProvider>();
@@ -247,6 +250,19 @@ namespace Atomia.Store.Themes.Default
             container.RegisterType<IDomainsProvider, Atomia.Store.Fakes.Adapters.FakePremiumDomainsProvider>();
             container.RegisterType<IOrderPlacementService, Atomia.Store.Fakes.Adapters.FakeOrderPlacementService>();
             container.RegisterType<ICurrencyProvider, Atomia.Store.Fakes.Adapters.FakeCurrencyProvider>();
+        }
+
+        private static void RegisterExistingCustomerOrdering(UnityContainer container)
+        {
+            if (!ConfigurationHelper.AllowExistingCustomerOrders())
+            {
+                return;
+            }
+
+            // Existing customer adapters
+            container.RegisterType<IContactDataProvider, CombinedContactProvider>();
+            container.RegisterType<CustomerLoginValidator, CustomerLoginValidator>();
+            container.RegisterType<OrderCreator, CombinedOrderCreator>();
         }
     }
 }

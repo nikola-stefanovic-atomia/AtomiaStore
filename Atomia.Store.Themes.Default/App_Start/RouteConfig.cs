@@ -43,6 +43,16 @@ namespace Atomia.Store.Themes.Default
             );
 
             routes.MapOrderFlowRoute(
+                name: "ExistingCustomer",
+                url: "ExistingCustomer/{action}",
+                defaults: new
+                {
+                    controller = "ExistingCustomer",
+                    action = "Index"
+                }
+            );
+
+            routes.MapOrderFlowRoute(
                 name: "Checkout",
                 url: "Checkout/{action}",
                 defaults: new

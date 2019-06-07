@@ -495,6 +495,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Login.
+        /// </summary>
+        internal static string CustomerLogin {
+            get {
+                return ResourceManager.GetString("CustomerLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Customer type.
         /// </summary>
         internal static string CustomerType {
@@ -819,6 +828,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Existing.
+        /// </summary>
+        internal static string Existing {
+            get {
+                return ResourceManager.GetString("Existing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Existing customer.
+        /// </summary>
+        internal static string ExistingCustomerTitle {
+            get {
+                return ResourceManager.GetString("ExistingCustomerTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Expires.
         /// </summary>
         internal static string Expires {
@@ -963,6 +990,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid username or password.
+        /// </summary>
+        internal static string InvalidUsernameOrPassword {
+            get {
+                return ResourceManager.GetString("InvalidUsernameOrPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid VAT number.
         /// </summary>
         internal static string InvalidVatNumber {
@@ -1062,6 +1098,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New.
+        /// </summary>
+        internal static string New {
+            get {
+                return ResourceManager.GetString("New", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Next.
         /// </summary>
         internal static string Next {
@@ -1139,6 +1184,15 @@ namespace Resources {
         internal static string OrderPageTitle {
             get {
                 return ResourceManager.GetString("OrderPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        internal static string Password {
+            get {
+                return ResourceManager.GetString("Password", resourceCulture);
             }
         }
         
@@ -1356,6 +1410,15 @@ namespace Resources {
         internal static string Select {
             get {
                 return ResourceManager.GetString("Select", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select account to continue.
+        /// </summary>
+        internal static string SelectAccountToContinue {
+            get {
+                return ResourceManager.GetString("SelectAccountToContinue", resourceCulture);
             }
         }
         

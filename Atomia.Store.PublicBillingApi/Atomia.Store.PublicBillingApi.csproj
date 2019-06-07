@@ -95,6 +95,7 @@
     <Compile Include="Adapters\DomainsProvider.cs" />
     <Compile Include="Adapters\LanguageProvider.cs" />
     <Compile Include="Adapters\OrderPlacementService.cs" />
+    <Compile Include="Adapters\PackageProvider.cs" />
     <Compile Include="Adapters\PaymentMethodsProvider.cs" />
     <Compile Include="Adapters\ProductProvider.cs" />
     <Compile Include="Adapters\ResellerProvider.cs" />

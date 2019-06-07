@@ -53,7 +53,7 @@ namespace Atomia.Store.PublicBillingApi
         public virtual IEnumerable<AttributeData> CheckDomains(IEnumerable<string> domains)
         {
             var domainsArray = domains.ToArray();
-            
+
             return service.CheckDomains(domainsArray);
         }
 
@@ -75,6 +75,11 @@ namespace Atomia.Store.PublicBillingApi
         public virtual VatNumberValidationResultType ValidateVatNumber(string countryCode, string vatNumber)
         {
             return service.ValidateVatNumber(countryCode, vatNumber);
+        }
+
+        public virtual bool IsMultiPackageEnabled()
+        {
+            return service.IsMultiPackageEnabled();
         }
     }
 }

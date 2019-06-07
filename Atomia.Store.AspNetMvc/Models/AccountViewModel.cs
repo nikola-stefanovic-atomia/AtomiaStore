@@ -33,6 +33,7 @@ namespace Atomia.Store.AspNetMvc.Models
             BillingContact = new BillingContactModel();
             WhoisContact = new WhoisContactModel();
             NoridDeclaration = new NoridDeclarationModel();
+            OrderAccountTypeSelector = new CustomerOrderAccountSelectorModel();
         }
 
         /// <summary>
@@ -54,6 +55,11 @@ namespace Atomia.Store.AspNetMvc.Models
         /// Data for NORID declaration when .no domain is added to cart.
         /// </summary>
         public NoridDeclarationModel NoridDeclaration { get; set; }
+
+        /// <summary>
+        /// Selects the new or exiting account when customers create a new order
+        /// </summary>
+        public CustomerOrderAccountSelectorModel OrderAccountTypeSelector { get; set; }
 
         /// <summary>
         /// If other billing contact than main contact should be used or not.

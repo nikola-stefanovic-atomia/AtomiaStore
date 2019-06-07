@@ -1,0 +1,26 @@
+﻿<!-- ko with: Atomia.VM.customerOrderAccountSelector -->
+
+<div style="display: none;" class="formrow" data-bind="visible: selectorVisible">
+    <h5>
+        <label class="required" for="order-account-type-select" aria-required="true">
+            <span>*</span>@Html.CommonResource("SelectAccountToContinue"):
+        </label>
+    </h5>
+    <div id="order-account-type-select" class="col2row">
+        <label>
+            <input type="radio" data-bind="checked: selectedAccountType, attr: { id: existingAccountType, value: existingAccountType, name: selectorGroupName }">
+            <label data-bind="attr: { for: existingAccountType }"></label>
+            @Html.CommonResource("Existing")
+        </label>
+        <br />
+        <label>
+            <input type="radio" data-bind="checked: selectedAccountType, attr: { id: newAccountType, value: newAccountType, name: selectorGroupName }">
+            <label data-bind="attr: { for: newAccountType }"></label>
+            @Html.CommonResource("New")
+        </label>
+        <br />
+    </div>
+    <br class="clear">
+</div>
+
+<!-- /ko -->

@@ -731,4 +731,25 @@
   <data name="IdentityNumber" xml:space="preserve">
     <value>Identitetsnummer</value>
   </data>
+  <data name="ExistingCustomerTitle" xml:space="preserve">
+    <value>Befintlig kund</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Lösenord</value>
+  </data>
+  <data name="Existing" xml:space="preserve">
+    <value>Existerande</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>Ny</value>
+  </data>
+  <data name="SelectAccountToContinue" xml:space="preserve">
+    <value>Välj konto för att fortsätta</value>
+  </data>
+  <data name="InvalidUsernameOrPassword" xml:space="preserve">
+    <value>Ogiltigt användarnamn eller lösenord</value>
+  </data>
+  <data name="CustomerLogin" xml:space="preserve">
+    <value>Logga in</value>
+  </data>
 </root>

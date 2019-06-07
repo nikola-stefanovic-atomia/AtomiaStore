@@ -13,7 +13,7 @@ namespace Atomia.Store.Themes.Default
             defaultOrderFlow.AddRouteNameAlias("OrderFlowStart", "Domains");
             cloudOrderFlow.AddRouteNameAlias("OrderFlowStart", "Account");
 
-            orderFlows.Add(defaultOrderFlow, true);
+            orderFlows.Add(defaultOrderFlow, isDefault: true);
             orderFlows.Add(cloudOrderFlow);
         }
     }

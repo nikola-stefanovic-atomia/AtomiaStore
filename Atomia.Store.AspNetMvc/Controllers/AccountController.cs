@@ -1,9 +1,9 @@
-﻿using System.Linq;
+﻿using Atomia.Store.AspNetMvc.Filters;
+using Atomia.Store.AspNetMvc.Helpers;
 using Atomia.Store.AspNetMvc.Models;
 using Atomia.Store.Core;
+using System.Linq;
 using System.Web.Mvc;
-using Atomia.Store.AspNetMvc.Filters;
-using Atomia.Store.AspNetMvc.Helpers;
 
 namespace Atomia.Store.AspNetMvc.Controllers
 {
@@ -34,6 +34,11 @@ namespace Atomia.Store.AspNetMvc.Controllers
             {
                 // first step, mark that DNS package should be added.
                 ViewBag.AddDnsPackage = ConfigurationHelper.GetDnsPackageArticleNumber();
+            }
+
+            if (TempData.ContainsKey("ExistingCustomerValidateLoginFailed"))
+            {
+                ModelState.AddModelError("CustomerLogin", TempData["ExistingCustomerValidateLoginFailed"].ToString());
             }
 
             return View(model);

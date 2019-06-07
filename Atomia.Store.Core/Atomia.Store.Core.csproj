@@ -96,6 +96,7 @@
     <Compile Include="Ports\ICustomerTypeProvider.cs" />
     <Compile Include="Ports\ILanguagePreferenceProvider.cs" />
     <Compile Include="Ports\IOrderPlacementService.cs" />
+    <Compile Include="Ports\IPackageProvider.cs" />
     <Compile Include="Ports\IProductProvider.cs" />
     <Compile Include="Ports\IResellerIdentifierProvider.cs" />
     <Compile Include="Ports\ITermsOfServiceProvider.cs" />

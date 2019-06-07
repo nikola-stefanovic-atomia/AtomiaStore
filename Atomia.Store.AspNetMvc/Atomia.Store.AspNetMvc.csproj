@@ -126,6 +126,7 @@
     <Compile Include="Models\CounterRangeModel.cs" />
     <Compile Include="Models\CounterTypeModel.cs" />
     <Compile Include="Models\NoridDeclarationModel.cs" />
+    <Compile Include="Models\CustomerOrderAccountSelectorModel.cs" />
     <Compile Include="Models\OrderFlowModel.cs" />
     <Compile Include="Models\SelectAttrsModel.cs" />
     <Compile Include="Models\SelectItemModel.cs" />
