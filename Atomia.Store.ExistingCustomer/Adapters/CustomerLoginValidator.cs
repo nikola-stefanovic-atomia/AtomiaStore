@@ -1,4 +1,4 @@
-﻿using Atomia.Store.ExistingCustomer.Models;
+﻿using Atomia.Store.AspNetMvc.Models;
 using Atomia.Web.Plugin.OrderServiceReferences.AtomiaBillingPublicService;
 
 namespace Atomia.Store.ExistingCustomer.Adapters

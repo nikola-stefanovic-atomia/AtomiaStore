@@ -1,4 +1,6 @@
-﻿<!-- ko with: Atomia.VM.customerOrderAccountSelector -->
+﻿@model Atomia.Store.AspNetMvc.Models.CustomerOrderAccountSelectorModel
+
+<!-- ko with: Atomia.VM.customerOrderAccountSelector -->
 
 <div style="display: none;" class="formrow" data-bind="visible: selectorVisible">
     <h5>
@@ -8,13 +10,13 @@
     </h5>
     <div id="order-account-type-select" class="col2row">
         <label>
-            <input type="radio" data-bind="checked: selectedAccountType, attr: { id: existingAccountType, value: existingAccountType, name: selectorGroupName }">
+            <input type="radio" id="@Model.ExistingAccountType" name="CustomerOrderAccountType" value="@Model.ExistingAccountType" data-bind="checked: selectedAccountType">
             <label data-bind="attr: { for: existingAccountType }"></label>
             @Html.CommonResource("Existing")
         </label>
         <br />
         <label>
-            <input type="radio" data-bind="checked: selectedAccountType, attr: { id: newAccountType, value: newAccountType, name: selectorGroupName }">
+            <input type="radio" id="@Model.NewAccountType" name="CustomerOrderAccountType" value="@Model.NewAccountType" data-bind="checked: selectedAccountType">
             <label data-bind="attr: { for: newAccountType }"></label>
             @Html.CommonResource("New")
         </label>

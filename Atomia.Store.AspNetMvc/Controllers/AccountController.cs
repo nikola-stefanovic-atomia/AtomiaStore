@@ -40,6 +40,11 @@ namespace Atomia.Store.AspNetMvc.Controllers
             {
                 ModelState.AddModelError("CustomerLogin", TempData["ExistingCustomerValidateLoginFailed"].ToString());
             }
+            
+            if (previousContactData != null && previousContactData.GetType() == typeof(ExistingCustomerContactModel))
+            {
+                ViewBag.SelectedOrderAccounType = CustomerOrderAccounType.Existing;
+            }
 
             return View(model);
         }

@@ -39,6 +39,7 @@ namespace Atomia.Store.ExistingCustomer.Adapters
             }
             else if (contactDataType.IsSubclassOf(typeof(AccountViewModel)))
             {
+                existingCustomerProvider.ClearContactData();
                 newCustomerProvider.SaveContactData(contactData);
             }
             else

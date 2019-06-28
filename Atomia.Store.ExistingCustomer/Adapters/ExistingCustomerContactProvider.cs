@@ -1,6 +1,6 @@
 ﻿using System.Web;
+using Atomia.Store.AspNetMvc.Models;
 using Atomia.Store.Core;
-using Atomia.Store.ExistingCustomer.Models;
 
 namespace Atomia.Store.ExistingCustomer.Adapters
 {

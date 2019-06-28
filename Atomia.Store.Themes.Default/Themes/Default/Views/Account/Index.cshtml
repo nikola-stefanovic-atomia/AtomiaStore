@@ -11,9 +11,13 @@
 <div class="settingsboxinner">
 
 
-    @{ Html.RenderPartial("_CustomerOrderAccountSelector"); } 
-
-    @{ Html.RenderPartial("_ExistingCustomer", new CustomerLoginModel()); }
+    @{
+        if (Model.OrderAccountTypeSelector.AllowExistingCustomerOrders)
+        {
+            Html.RenderPartial("_CustomerOrderAccountSelector", Model.OrderAccountTypeSelector);
+            Html.RenderPartial("_ExistingCustomer", Model.ExistingCustomerContact);
+        }
+    }
 
     @{
         using (Html.BeginForm("Index", "Account", routeValues, FormMethod.Post, new { id="Account_Form", data_bind = "slideVisible: customerOrderAccountSelector.newAccountFormVisible", style = "display: none;" }))

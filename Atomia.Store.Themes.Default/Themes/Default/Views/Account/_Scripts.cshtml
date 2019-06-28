@@ -42,6 +42,7 @@
     fields = fields.TrimEnd(',') + "}";
 
     var dnsItem = (string) ViewBag.AddDnsPackage;
+    var selectedOrderAccounType = ViewBag.SelectedOrderAccounType as CustomerOrderAccounType?;
 }
 
 <script type="text/javascript">
@@ -50,6 +51,7 @@
         allowExistingCustomerOrders: @Model.OrderAccountTypeSelector.AllowExistingCustomerOrders.ToString().ToLower(),
         existingAccountType: '@Model.OrderAccountTypeSelector.ExistingAccountType',
         newAccountType: '@Model.OrderAccountTypeSelector.NewAccountType',
+        selectedOrderAccounType: '@Html.Raw(selectedOrderAccounType)'
     });
 
     Atomia.VM.account = Atomia.Utils.mix(Atomia.ViewModels.AccountModel, Atomia.ViewModels.WhoisModel);

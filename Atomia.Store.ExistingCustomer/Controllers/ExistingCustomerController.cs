@@ -1,4 +1,5 @@
-﻿using Atomia.Store.Core;
+﻿using Atomia.Store.AspNetMvc.Models;
+using Atomia.Store.Core;
 using Atomia.Store.ExistingCustomer.Adapters;
 using Atomia.Store.ExistingCustomer.Models;
 using System.Web.Mvc;

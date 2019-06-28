@@ -34,6 +34,7 @@ namespace Atomia.Store.AspNetMvc.Models
             WhoisContact = new WhoisContactModel();
             NoridDeclaration = new NoridDeclarationModel();
             OrderAccountTypeSelector = new CustomerOrderAccountSelectorModel();
+            ExistingCustomerContact = new ExistingCustomerContactData();
         }
 
         /// <summary>
@@ -62,6 +63,10 @@ namespace Atomia.Store.AspNetMvc.Models
         public CustomerOrderAccountSelectorModel OrderAccountTypeSelector { get; set; }
 
         /// <summary>
+        /// Existing customer contact data collected from the logged customer.
+        /// </summary>
+        public ExistingCustomerContactData ExistingCustomerContact { get; set; }
+        /// <summary>
         /// If other billing contact than main contact should be used or not.
         /// </summary>
         public bool OtherBillingContact { get; set; }
@@ -89,6 +94,7 @@ namespace Atomia.Store.AspNetMvc.Models
             var main = allContacts.FirstOrDefault(c => c.Id == "MainContact") as MainContactModel;
             var billing = allContacts.FirstOrDefault(c => c.Id == "BillingContact") as BillingContactModel;
             var whois = allContacts.FirstOrDefault(c => c.Id == "WhoisContact") as WhoisContactModel;
+            var existingCustomer = allContacts.FirstOrDefault(c => c.Id == "ExistingCustomerContact") as ExistingCustomerContactData;
 
             // Email is required so if it is present the form has been filled in.
 
@@ -107,6 +113,11 @@ namespace Atomia.Store.AspNetMvc.Models
             {
                 this.WhoisContact = whois;
                 this.OtherWhoisContact = true;
+            }
+
+            if (existingCustomer != null && !string.IsNullOrEmpty(existingCustomer.Username) && existingCustomer.Valid)
+            {
+                this.ExistingCustomerContact = existingCustomer;
             }
         }
     }
