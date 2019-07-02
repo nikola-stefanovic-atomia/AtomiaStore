@@ -179,7 +179,38 @@ namespace Atomia.Store.Themes.Default
             container.RegisterType<OrderDataHandler, Atomia.Store.PublicOrderHandlers.CartItemHandlers.RemovePostOrderHandler>("RemovePostOrder");
 
             container.RegisterType<IOrderPlacementService, Atomia.Store.PublicBillingApi.Adapters.OrderPlacementService>();
+            
+            var orderDataHandlerParams = GetOrderDataHandlerParams();
 
+            bool loginAfterOrder;
+            var loginAfterOrderSetting = ConfigurationManager.AppSettings["LoginAfterOrder"] as String;
+
+            if (!Boolean.TryParse(loginAfterOrderSetting, out loginAfterOrder))
+            {
+                throw new ConfigurationErrorsException("Could not parse boolean from 'LoginAfterOrder' setting or it is missing.");
+            }
+
+            if (loginAfterOrder)
+            {
+                container.RegisterType<OrderCreator, Atomia.Store.PublicBillingApi.TokenLoginOrderCreator>(
+                    new InjectionConstructor(new ResolvedParameter<PaymentUrlProvider>(), orderDataHandlerParams, new ResolvedParameter<PublicBillingApiProxy>()));
+            }
+            else
+            {
+                container.RegisterType<OrderCreator, Atomia.Store.PublicBillingApi.SimpleOrderCreator>(
+                    new InjectionConstructor(orderDataHandlerParams, new ResolvedParameter<PublicBillingApiProxy>(), new ResolvedParameter<IAuditLogger>()));
+            }
+
+            container.RegisterType<PaymentTransactionCreator, Atomia.Store.PublicBillingApi.PaymentTransactionCreator>();
+
+            // These are required since Unity does not handle IEnumerable<T> automatically.
+            container.RegisterType<IEnumerable<PaymentDataHandler>, PaymentDataHandler[]>();
+            container.RegisterType<IEnumerable<OrderDataHandler>, OrderDataHandler[]>();
+            container.RegisterType<IEnumerable<TransactionDataHandler>, TransactionDataHandler[]>();
+        }
+
+        private static ResolvedArrayParameter<OrderDataHandler> GetOrderDataHandlerParams()
+        {
             // We resolve the parameters manually to control the order the OrderHandlers are applied.
             var orderDataHandlerParams = new ResolvedArrayParameter<OrderDataHandler>(
                 new ResolvedParameter<OrderDataHandler>("Reseller"),
@@ -207,31 +238,7 @@ namespace Atomia.Store.Themes.Default
                 new ResolvedParameter<OrderDataHandler>("RemovePostOrder")
             );
 
-            bool loginAfterOrder;
-            var loginAfterOrderSetting = ConfigurationManager.AppSettings["LoginAfterOrder"] as String;
-
-            if (!Boolean.TryParse(loginAfterOrderSetting, out loginAfterOrder))
-            {
-                throw new ConfigurationErrorsException("Could not parse boolean from 'LoginAfterOrder' setting or it is missing.");
-            }
-
-            if (loginAfterOrder)
-            {
-                container.RegisterType<OrderCreator, Atomia.Store.PublicBillingApi.TokenLoginOrderCreator>(
-                    new InjectionConstructor(new ResolvedParameter<PaymentUrlProvider>(), orderDataHandlerParams, new ResolvedParameter<PublicBillingApiProxy>()));
-            }
-            else
-            {
-                container.RegisterType<OrderCreator, Atomia.Store.PublicBillingApi.SimpleOrderCreator>(
-                    new InjectionConstructor(orderDataHandlerParams, new ResolvedParameter<PublicBillingApiProxy>(), new ResolvedParameter<IAuditLogger>()));
-            }
-
-            container.RegisterType<PaymentTransactionCreator, Atomia.Store.PublicBillingApi.PaymentTransactionCreator>();
-
-            // These are required since Unity does not handle IEnumerable<T> automatically.
-            container.RegisterType<IEnumerable<PaymentDataHandler>, PaymentDataHandler[]>();
-            container.RegisterType<IEnumerable<OrderDataHandler>, OrderDataHandler[]>();
-            container.RegisterType<IEnumerable<TransactionDataHandler>, TransactionDataHandler[]>();
+            return orderDataHandlerParams;
         }
 
         /// <summary>
@@ -262,7 +269,10 @@ namespace Atomia.Store.Themes.Default
             // Existing customer adapters
             container.RegisterType<IContactDataProvider, CombinedContactProvider>();
             container.RegisterType<CustomerLoginValidator, CustomerLoginValidator>();
-            container.RegisterType<OrderCreator, CombinedOrderCreator>();
+
+            var orderDataHandlerParams = GetOrderDataHandlerParams();
+            container.RegisterType<OrderCreator, CombinedOrderCreator>(
+                    new InjectionConstructor(orderDataHandlerParams, new ResolvedParameter<PublicBillingApiProxy>(), new ResolvedParameter<IAuditLogger>()));
         }
     }
 }
