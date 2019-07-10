@@ -42,7 +42,7 @@
     fields = fields.TrimEnd(',') + "}";
 
     var dnsItem = (string) ViewBag.AddDnsPackage;
-    var selectedOrderAccounType = ViewBag.SelectedOrderAccounType as CustomerOrderAccounType?;
+    var selectedOrderAccounType = (CustomerOrderAccounType) ViewBag.SelectedOrderAccounType;
 }
 
 <script type="text/javascript">

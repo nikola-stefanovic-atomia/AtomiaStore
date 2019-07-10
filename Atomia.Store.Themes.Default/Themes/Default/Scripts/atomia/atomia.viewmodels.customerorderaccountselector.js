@@ -14,11 +14,7 @@ Atomia.ViewModels = Atomia.ViewModels || {};
         self.existingAccountType = model.existingAccountType;
 
         self.selectorVisible = ko.observable(model.allowExistingCustomerOrders);
-        self.selectedAccountType = ko.observable(self.selectorVisible() ? self.existingAccountType : self.newAccountType);
-
-        if (model.selectedAccountType) {
-            self.selectedAccountType(model.selectedAccountType);
-        }
+        self.selectedAccountType = ko.observable(model.selectedOrderAccounType);
 
         self.existingAccountFormVisible = ko.pureComputed(function () {
             return self.selectedAccountType() == self.existingAccountType;
