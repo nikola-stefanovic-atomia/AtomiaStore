@@ -41,11 +41,7 @@ namespace Atomia.Store.AspNetMvc.Controllers
                 ModelState.AddModelError("CustomerLogin", TempData["ExistingCustomerValidateLoginFailed"].ToString());
             }
 
-            ViewBag.SelectedOrderAccounType = CustomerOrderAccounType.New;
-            if (previousContactData != null && previousContactData.GetType() == typeof(ExistingCustomerContactModel))
-            {
-                ViewBag.SelectedOrderAccounType = CustomerOrderAccounType.Existing;
-            }
+            SetSelectedCustomerType(previousContactData);
 
             return View(model);
         }
@@ -73,7 +69,23 @@ namespace Atomia.Store.AspNetMvc.Controllers
                 return RedirectToAction("Index", "Checkout", routeValues);
             }
 
+            var previousContactData = contactDataProvider.GetContactData();
+            SetSelectedCustomerType(previousContactData);
+
             return View(model);
+        }
+
+        /// <summary>
+        /// Determines which kind of contact is selected.
+        /// </summary>
+        /// <param name="previousContactData">Contact data collection</param>
+        private void SetSelectedCustomerType(IContactDataCollection previousContactData)
+        {
+            ViewBag.SelectedOrderAccounType = CustomerOrderAccounType.New;
+            if (previousContactData != null && previousContactData.GetType() == typeof(ExistingCustomerContactModel))
+            {
+                ViewBag.SelectedOrderAccounType = CustomerOrderAccounType.Existing;
+            }
         }
 
         /// <summary>
