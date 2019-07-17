@@ -1,10 +1,12 @@
 ﻿@model Atomia.Store.AspNetMvc.Models.ExistingCustomerContactData
 
-@using (Html.BeginForm("ValidateLogin", "ExistingCustomer", FormMethod.Post, new { id = "Login_Form", data_bind = "slideVisible: customerOrderAccountSelector.existingAccountFormVisible", style= "display: none;" }))
+@using (Html.BeginForm("ValidateLogin", "ExistingCustomer", FormMethod.Post, new { id = "Login_Form", data_bind = "slideVisible: customerOrderAccountSelector.existingAccountFormVisible", style = "display: none;" }))
 {
     <h4> @Html.CommonResource("ExistingCustomerTitle")</h4>
 
+    <!-- ko if: customerOrderAccountSelector.validationSummaryVisibleFor == customerOrderAccountSelector.existingAccountType -->
     Html.RenderPartial("_ValidationSummary", ViewData.ModelState);
+    <!-- /ko-->
     @Html.AntiForgeryToken();
     @Html.FormRowFor(m => m.Username, Html.CommonResource("Username") + ":", true, "value: existingCustomer.username")
 

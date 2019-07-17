@@ -69,8 +69,7 @@ namespace Atomia.Store.AspNetMvc.Controllers
                 return RedirectToAction("Index", "Checkout", routeValues);
             }
 
-            var previousContactData = contactDataProvider.GetContactData();
-            SetSelectedCustomerType(previousContactData);
+            ViewBag.SelectedOrderAccounType = CustomerOrderAccounType.New;
 
             return View(model);
         }

@@ -115,7 +115,7 @@ namespace Atomia.Store.AspNetMvc.Models
                 this.OtherWhoisContact = true;
             }
 
-            if (existingCustomer != null && !string.IsNullOrEmpty(existingCustomer.Username) && existingCustomer.Valid)
+            if (existingCustomer != null && !string.IsNullOrEmpty(existingCustomer.Username))
             {
                 this.ExistingCustomerContact = existingCustomer;
             }

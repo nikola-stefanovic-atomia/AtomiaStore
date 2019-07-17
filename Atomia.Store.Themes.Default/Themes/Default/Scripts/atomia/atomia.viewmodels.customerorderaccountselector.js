@@ -12,6 +12,7 @@ Atomia.ViewModels = Atomia.ViewModels || {};
 
         self.newAccountType = model.newAccountType;
         self.existingAccountType = model.existingAccountType;
+        self.validationSummaryVisibleFor = model.selectedOrderAccounType;
 
         self.selectorVisible = ko.observable(model.allowExistingCustomerOrders);
         self.selectedAccountType = ko.observable(model.selectedOrderAccounType);

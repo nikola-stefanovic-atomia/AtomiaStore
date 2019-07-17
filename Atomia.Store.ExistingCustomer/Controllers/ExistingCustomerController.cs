@@ -27,13 +27,12 @@ namespace Atomia.Store.ExistingCustomer.Controllers
             {
                 var contactData = customerLoginValidator.ValidateCustomerLogin(model.Username, model.Password);
 
+                var existingCustomer = new ExistingCustomerContactModel();
+                existingCustomer.SetContactData(contactData);
+                contactDataProvider.SaveContactData(existingCustomer);
+
                 if (contactData.Valid)
                 {
-                    var existingCustomer = new ExistingCustomerContactModel();
-                    existingCustomer.SetContactData(contactData);
-
-                    contactDataProvider.SaveContactData(existingCustomer);
-
                     return RedirectToAction("Index", "Checkout");
                 }
                 else
