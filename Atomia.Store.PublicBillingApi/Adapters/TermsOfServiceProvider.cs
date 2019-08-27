@@ -85,13 +85,8 @@ namespace Atomia.Store.PublicBillingApi.Adapters
 
             foreach (var resource in tosResources)
             {
-                termsOfService.Add(new TermsOfService
-                {
-                    Id = resource,
-                    Name = resourceProvider.GetResource(resource + "_Name"),
-                    Terms = resourceProvider.GetResource(resource + "_Terms"),
-                    Link = resourceProvider.GetResource(resource + "_Link")
-                });
+                TermsOfService tosResource = this.GetTermsOfService(resource);
+                termsOfService.Add(tosResource);
             }
 
             return termsOfService;

@@ -14,7 +14,7 @@ namespace Atomia.Store.AspNetMvc.Filters
         {
             var request = filterContext.HttpContext.Request;
             
-            if (filterContext.Controller.ControllerContext.IsChildAction || request.IsAjaxRequest())
+            if (filterContext.Controller.ControllerContext.IsChildAction)
             {
                 return;
             }

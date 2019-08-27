@@ -16,6 +16,7 @@
                     @Html.LabelFor(m => m.TermsOfService[i].Confirm, Html.CommonResource("ReadAndAgree")) @Html.ActionLink(Model.TermsOfService[i].Name, "TermsOfService", new { Id = Model.TermsOfService[i].Id }, new { target = "_blank" })
                     @Html.ValidationMessageFor(m => m.TermsOfService[i].Confirm)
                     @Html.HiddenFor(m => m.TermsOfService[i].Id)
+                    @Html.HiddenFor(m => m.TermsOfService[i].Name)
                 </div>
             }
         </div>
