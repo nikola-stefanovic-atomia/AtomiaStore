@@ -34,8 +34,8 @@ namespace Atomia.Store.AspNetMvc.Filters
             var currentLanguage = languagePreferenceProvider.GetCurrentLanguage();
             var currentCulture = currentLanguage.AsCultureInfo();
 
-            Thread.CurrentThread.CurrentCulture = currentCulture;
-            Thread.CurrentThread.CurrentUICulture = currentCulture;
+            System.Globalization.CultureInfo.DefaultThreadCurrentCulture = currentCulture;
+            System.Globalization.CultureInfo.DefaultThreadCurrentUICulture = currentCulture;
         }
     }
 }

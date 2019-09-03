@@ -684,6 +684,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You must confirm the Terms of Service..
+        /// </summary>
+        internal static string ErrorConfirm {
+            get {
+                return ResourceManager.GetString("ErrorConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Not a valid credit card number.
         /// </summary>
         internal static string ErrorCreditCard {

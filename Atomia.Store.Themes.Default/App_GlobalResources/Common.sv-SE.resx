@@ -752,4 +752,7 @@
   <data name="CustomerLogin" xml:space="preserve">
     <value>Logga in</value>
   </data>
+  <data name="ErrorConfirm" xml:space="preserve">
+    <value>Du måste läsa och godkänna alla avtal.</value>
+  </data>
 </root>

@@ -1,6 +1,9 @@
 ﻿@model Atomia.Store.AspNetMvc.Models.DefaultCheckoutViewModel
 
 <!-- ko if: termsOfService().length > 0 -->
+@{
+    var formHasErrors = Boolean.Parse(ViewData["formHasErrors"].ToString());
+}
 @if (Model.TermsOfService.Count > 0)
 {
     <h4>@Html.CommonResource("Terms")</h4>
@@ -14,7 +17,7 @@
                     @Html.LabelFor(m => m.TermsOfService[i].Confirm, " ")
                     @Html.LabelFor(m => m.TermsOfService[i].Confirm, " ")
                     @Html.LabelFor(m => m.TermsOfService[i].Confirm, Html.CommonResource("ReadAndAgree")) @Html.ActionLink(Model.TermsOfService[i].Name, "TermsOfService", new { Id = Model.TermsOfService[i].Id }, new { target = "_blank" })
-                    @Html.ValidationMessageFor(m => m.TermsOfService[i].Confirm)
+                    @Html.ValidationMessageFor(m => m.TermsOfService[i].Confirm, formHasErrors ? Html.CommonResource("ErrorTermNotChecked") : "")
                     @Html.HiddenFor(m => m.TermsOfService[i].Id)
                     @Html.HiddenFor(m => m.TermsOfService[i].Name)
                 </div>

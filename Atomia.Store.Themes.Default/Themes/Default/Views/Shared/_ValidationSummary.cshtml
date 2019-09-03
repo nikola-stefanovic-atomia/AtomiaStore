@@ -4,6 +4,7 @@
 
 @{
     var formHasErrors = Model.Any(x => x.Value.Errors.Count > 0);
+    int i = 0;
 }
 
 @if (formHasErrors)
@@ -12,7 +13,9 @@
         <ul>
             @foreach (var kv in Model.Where(x => x.Value.Errors.Count > 0))
             {
-                <li><strong>@Html.CommonResource(kv.Key.Split('.').Last()):</strong> @String.Join(", ", kv.Value.Errors.Select(e => e.ErrorMessage))</li>
+                string errorMessage = string.IsNullOrEmpty(Html.Resource("CustomerValidation, " + kv.Key.Split('.').Last())) ? Html.CommonResource("Error" + kv.Key.Split('.').Last()) : Html.Resource("CustomerValidation, " + kv.Key.Split('.').Last());
+                <li><strong>@Html.CommonResource(kv.Key.Split('.').Last()):</strong> @String.Join(", ", string.IsNullOrEmpty(errorMessage) ? kv.Value.Errors.Select(e => e.ErrorMessage).ElementAt(i) : errorMessage)</li>
+                i++;
             }
         </ul>
     </div>

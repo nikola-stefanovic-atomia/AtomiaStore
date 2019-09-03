@@ -36,6 +36,7 @@ namespace Atomia.Store.AspNetMvc.Controllers
             ViewBag.CheckVAT = !String.IsNullOrEmpty(vatDataProvider.VatNumber);
             
             var model = DependencyResolver.Current.GetService<CheckoutViewModel>();
+            ViewData["formHasErrors"] = false;
 
             return View(model);
         }
@@ -87,6 +88,7 @@ namespace Atomia.Store.AspNetMvc.Controllers
                 return Redirect(result.RedirectUrl);
             }
 
+            ViewData["formHasErrors"] = true;
             return View(model);
         }
 

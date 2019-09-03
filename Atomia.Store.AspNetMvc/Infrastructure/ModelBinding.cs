@@ -1,7 +1,5 @@
 ﻿using Atomia.Store.AspNetMvc.Ports;
-using Atomia.Store.Core;
 using System;
-using System.Threading;
 using System.Web.Mvc;
 
 namespace Atomia.Store.AspNetMvc.Infrastructure
@@ -16,13 +14,6 @@ namespace Atomia.Store.AspNetMvc.Infrastructure
         /// </summary>
         public override object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
         {
-            var culture = DependencyResolver.Current.GetService<ILanguagePreferenceProvider>().GetCurrentLanguage().AsCultureInfo();
-            if (System.Globalization.CultureInfo.CurrentCulture != culture)
-            {
-                Thread.CurrentThread.CurrentCulture = culture;
-                Thread.CurrentThread.CurrentUICulture = culture;
-            }
-
             var model = DependencyResolver.Current.GetService(bindingContext.ModelType);
 
             if (model != null)

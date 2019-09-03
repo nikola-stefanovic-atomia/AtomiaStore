@@ -761,4 +761,7 @@
   <data name="CustomerLogin" xml:space="preserve">
     <value>Login</value>
   </data>
+  <data name="ErrorConfirm" xml:space="preserve">
+    <value>You must confirm the Terms of Service.</value>
+  </data>
 </root>
