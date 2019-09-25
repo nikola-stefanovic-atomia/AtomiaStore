@@ -1,0 +1,19 @@
+﻿<h4>@Html.CommonResource("PackageName")</h4>
+<p>@Html.CommonResource("PackageNameDescription")</p>
+<div class="formrow">
+    <h5>
+        <label for="master">
+            @Html.CommonResource("PackageName"):
+        </label>
+    </h5>
+    <div class="col2row" data-bind="component: {
+        name: 'custom-label',
+        params: {
+            cart: Atomia.VM.cart,
+            selectedItem: Atomia.VM.products.selectedProduct
+        }
+    }">
+
+    </div>
+    <br class="clear">
+</div>

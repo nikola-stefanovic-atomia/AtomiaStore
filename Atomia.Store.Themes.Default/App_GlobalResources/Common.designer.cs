@@ -1197,6 +1197,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Package name.
+        /// </summary>
+        internal static string PackageName {
+            get {
+                return ResourceManager.GetString("PackageName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can set a name for the web hosting package..
+        /// </summary>
+        internal static string PackageNameDescription {
+            get {
+                return ResourceManager.GetString("PackageNameDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>        
         ///   Looks up a localized string similar to Password.
         /// </summary>
         internal static string Password {

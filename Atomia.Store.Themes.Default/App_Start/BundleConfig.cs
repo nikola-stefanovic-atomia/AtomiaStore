@@ -54,6 +54,7 @@ namespace Atomia.Store.Themes.Default
                     "~/Themes/Default/Scripts/atomia/atomia.viewmodels.vatvalidation.js",
                     "~/Themes/Default/Scripts/atomia/atomia.viewmodels.checkout.js",
                     "~/Themes/Default/Scripts/atomia/atomia.viewmodels.vpscalculator.js",
+                    "~/Themes/Default/Scripts/atomia/atomia.viewmodels.customlabel.js",
                     "~/Themes/Default/Scripts/atomia/atomia.viewmodels.existingcustomer.js",
                     "~/Themes/Default/Scripts/atomia/atomia.viewmodels.customerorderaccountselector.js");
 

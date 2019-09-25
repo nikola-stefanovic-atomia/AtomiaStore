@@ -731,6 +731,12 @@
   <data name="IdentityNumber" xml:space="preserve">
     <value>Identitetsnummer</value>
   </data>
+  <data name="PackageName" xml:space="preserve">
+    <value>Paketnamn</value>
+  </data>
+  <data name="PackageNameDescription" xml:space="preserve">
+    <value>Du kan ställa in ett namn för hosting paket.</value>
+  </data>
   <data name="ExistingCustomerTitle" xml:space="preserve">
     <value>Befintlig kund</value>
   </data>
