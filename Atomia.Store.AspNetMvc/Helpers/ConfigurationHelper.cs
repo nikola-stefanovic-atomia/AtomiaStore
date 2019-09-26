@@ -33,18 +33,5 @@ namespace Atomia.Store.AspNetMvc.Helpers
 
             return retVal;
         }
-
-        public static bool IsPackageLabelEnabled()
-        {
-            var enablePckageLabelSetting = ConfigurationManager.AppSettings["EnablePackageLabel"] as string;
-            bool retVal;
-
-            if (!bool.TryParse(enablePckageLabelSetting, out retVal))
-            {
-                throw new ConfigurationErrorsException("Could not parse boolean from 'EnablePackageLabel' setting or it is missing.");
-            }
-
-            return retVal;
-        }
     }
 }

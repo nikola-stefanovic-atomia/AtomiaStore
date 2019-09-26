@@ -8,7 +8,6 @@
 
     Atomia.VM.products = new Atomia.ViewModels.ProductListingModel(Atomia.VM.cart);
     Atomia.VM.products.singleSelection = true;
-    Atomia.VM.products.isPackageLabelEnabled = @Model.IsPackageLabelEnabled.ToString().ToLower();
 
     Atomia.VM.products.load(@Html.JsonAction("GetData", "ProductListing", new { query = Model.Query }));
 </script>

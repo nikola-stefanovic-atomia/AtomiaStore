@@ -177,7 +177,6 @@ namespace Atomia.Store.Themes.Default
             container.RegisterType<OrderDataHandler, Atomia.Store.PublicOrderHandlers.CartItemHandlers.DefaultHandler>("Default");
             container.RegisterType<OrderDataHandler, Atomia.Store.PublicOrderHandlers.CartItemHandlers.SetupFeesHandler>("SetupFees");
             container.RegisterType<OrderDataHandler, Atomia.Store.PublicOrderHandlers.CartItemHandlers.RemovePostOrderHandler>("RemovePostOrder");
-            container.RegisterType<OrderDataHandler, Atomia.Store.PublicOrderHandlers.CartItemHandlers.HostingHandler>("HostingHandler");
 
             container.RegisterType<IOrderPlacementService, Atomia.Store.PublicBillingApi.Adapters.OrderPlacementService>();
             
@@ -226,7 +225,6 @@ namespace Atomia.Store.Themes.Default
                 new ResolvedParameter<OrderDataHandler>("RegisterDomain"),
                 new ResolvedParameter<OrderDataHandler>("TransferDomain"),
                 new ResolvedParameter<OrderDataHandler>("OwnDomain"),
-                new ResolvedParameter<OrderDataHandler>("HostingHandler"),
                 new ResolvedParameter<OrderDataHandler>("SetupFees"),
 
                 // This is a good position for TLD specific handlers.

@@ -740,12 +740,6 @@
   <data name="IdentityNumber" xml:space="preserve">
     <value>ID number</value>
   </data>
-  <data name="PackageName" xml:space="preserve">
-    <value>Package name</value>
-  </data>
-  <data name="PackageNameDescription" xml:space="preserve">
-    <value>You can set a name for the web hosting package.</value>
-  </data>
   <data name="ExistingCustomerTitle" xml:space="preserve">
     <value>Existing customer</value>
   </data>

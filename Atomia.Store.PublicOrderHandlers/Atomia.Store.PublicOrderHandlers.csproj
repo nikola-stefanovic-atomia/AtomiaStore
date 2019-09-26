@@ -77,7 +77,6 @@
     <Compile Include="CampaignCodeHandler.cs" />
     <Compile Include="CartItemHandlers\DefaultHandler.cs" />
     <Compile Include="CartItemHandlers\BaseDomainHandler.cs" />
-    <Compile Include="CartItemHandlers\HostingHandler.cs" />
     <Compile Include="CartItemHandlers\TransferDomainHandler.cs" />
     <Compile Include="CartItemHandlers\RegisterDomainHandler.cs" />
     <Compile Include="CartItemHandlers\SetupFeesHandler.cs" />

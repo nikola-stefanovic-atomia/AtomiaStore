@@ -159,16 +159,16 @@ Atomia.ViewModels = Atomia.ViewModels || {};
         var self = this;
 
         self.id = _.uniqueId('tmp-cartitem-');
-
-        /**
-         * Equality comparer between this item and 'other'. Defaults to comparing 'Id' properties.
+        
+        /** 
+         * Equality comparer between this item and 'other'. Defaults to comparing 'Id' properties. 
          * @param {Object} other - The item to compare to.
          */
         self.equals = function equals(other) {
             return self.id === other.id;
         };
 
-        /**
+        /** 
          * Collects custom options (renewal period and domain name) of item.
          * @returns {string[]} Array of custom options.
          */
@@ -189,11 +189,11 @@ Atomia.ViewModels = Atomia.ViewModels || {};
         _.extend(self, item);
     }
 
-
+    
     /** Create view model for cart. */
     function CartModel(notification) {
         var self = this;
-
+        
         self.domainCategories = [];
         self.cartItems = ko.observableArray();
         self.subTotal = ko.observable(0);
@@ -203,11 +203,11 @@ Atomia.ViewModels = Atomia.ViewModels || {};
         self.pricesIncludeVat = ko.observable(false);
         self.attrs = ko.observableArray();
         self._origAttrNames = {};
-
+        
         self.numberOfItems = ko.pureComputed(function numberOfItems() {
             return self.cartItems().length;
         });
-
+        
         self.isEmpty = ko.pureComputed(function isEmpty() {
             return self.numberOfItems() <= 0;
         });
@@ -345,51 +345,6 @@ Atomia.ViewModels = Atomia.ViewModels || {};
             }
         };
 
-        /** Associate a custom label to 'mainItem'. Optionally set 'recalculate' to false. */
-        self.addLabel = function addLabel(mainItem, label, recalculate) {
-            var mainInCart = self.getExisting(mainItem);
-
-            if (recalculate === undefined) {
-                recalculate = true;
-            }
-
-            if (mainInCart === undefined) {
-                throw new Error('mainItem is not in cart.');
-            }
-
-            if (mainInCart.attrs.label !== label) {
-                mainInCart.attrs.label = label;
-
-                if (recalculate === true) {
-                    cartApi.recalculateCart(toCartApiData(self), function (result) {
-                        updateCart(self, result.Cart);
-                    });
-                }
-            }
-        };
-
-        /** Remove any label name associations from 'mainItem'. Optionally set 'recalculate' to false.*/
-        self.removeLabel = function removeLabel(mainItem, recalculate) {
-            var mainInCart = self.getExisting(mainItem);
-
-            if (recalculate === undefined) {
-                recalculate = true;
-            }
-
-            if (mainInCart === undefined) {
-                throw new Error('mainItem is not in cart.');
-            }
-
-            if (mainInCart.attrs.label !== undefined) {
-                mainInCart.attrs.label = undefined;
-
-                if (recalculate === true) {
-                    cartApi.recalculateCart(toCartApiData(self), function (result) {
-                        updateCart(self, result.Cart);
-                    });
-                }
-            }
-        };
 
         self.hasHostingPackage = function hasHostingPackage() {
             var itemInCart = _.find(self.cartItems(), function (cartItem) {
@@ -562,7 +517,7 @@ Atomia.ViewModels = Atomia.ViewModels || {};
         };
     }
 
-    /**
+    /** 
      * Extends 'item' with cart helper methods.
      * @param {Object} cart - The cart to apply helpers to.
      * @param {Object} item - The item to extend with helper methods.
@@ -573,7 +528,7 @@ Atomia.ViewModels = Atomia.ViewModels || {};
             isInCart: ko.computed(function isInCart() {
                 return cart.contains(item);
             }).extend({ notify: 'always' }),
-
+            
             getItemInCart: function getItemInCart() {
                 return cart.getExisting(item);
             },
@@ -589,7 +544,7 @@ Atomia.ViewModels = Atomia.ViewModels || {};
             toggleInCart: function toggleInCart() {
                 cart.addOrRemove(item);
 
-                // Since this is expected to be used with checkboxes,
+                // Since this is expected to be used with checkboxes, 
                 // returning true allows the click to continue and check the checkbox
                 return true;
             },
@@ -602,7 +557,7 @@ Atomia.ViewModels = Atomia.ViewModels || {};
         return _.extend(item, cartExtensions);
     }
 
-
+    
     /* Module exports */
     _.extend(exports, {
         CartItem: CartItem,
