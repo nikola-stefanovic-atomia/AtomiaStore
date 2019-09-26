@@ -235,7 +235,6 @@
     <Content Include="App_GlobalResources\Common.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Common.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -291,7 +290,6 @@
     <Content Include="Themes\Default\Scripts\atomia\atomia.viewmodels.checkout.js" />
     <Content Include="Themes\Default\Scripts\atomia\atomia.viewmodels.currencyselector.js" />
     <Content Include="Themes\Default\Scripts\atomia\atomia.viewmodels.customerorderaccountselector.js" />
-    <Content Include="Themes\Default\Scripts\atomia\atomia.viewmodels.customlabel.js" />
     <Content Include="Themes\Default\Scripts\atomia\atomia.viewmodels.noriddeclaration.js" />
     <Content Include="Themes\Default\Scripts\atomia\atomia.viewmodels.existingcustomer.js" />
     <Content Include="Themes\Default\Scripts\atomia\atomia.viewmodels.paymentprofile.js" />
@@ -350,8 +348,6 @@
     <Content Include="Themes\Default\Views\Shared\_CurrencySelector.cshtml" />
     <Content Include="Themes\Default\Views\Account\_NoridDeclaration.cshtml" />
     <Content Include="Themes\Default\Views\Account\NoridTermsOfService.cshtml" />
-    <Content Include="Themes\Default\Views\ProductListing\_CustomLabel.cshtml" />
-    <Content Include="Themes\Default\Views\ProductListing\_CustomLabelScripts.cshtml" />
     <Content Include="Themes\Default\Views\Account\_ExistingCustomer.cshtml" />
     <Content Include="Themes\Default\Views\Account\_CustomerOrderAccountSelector.cshtml" />
   </ItemGroup>
@@ -507,7 +503,6 @@
     <Content Include="App_GlobalResources\Common.sv-SE.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Common.sv-SE.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -517,9 +512,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_GlobalResources\Common.tr-TR.resx">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="App_GlobalResources\Common.tr-TR.resx" />
     <Content Include="App_GlobalResources\CustomerValidation.tr-TR.resx" />
   </ItemGroup>
   <ItemGroup>
