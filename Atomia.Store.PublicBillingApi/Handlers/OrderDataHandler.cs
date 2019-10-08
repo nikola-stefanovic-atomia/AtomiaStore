@@ -54,7 +54,7 @@ namespace Atomia.Store.PublicBillingApi.Handlers
         protected void Add(PublicOrder order, PublicOrderItem item)
         {
             var orderItems = new List<PublicOrderItem>(order.OrderItems);
-            
+
             orderItems.Add(item);
 
             order.OrderItems = orderItems.ToArray();
@@ -76,7 +76,7 @@ namespace Atomia.Store.PublicBillingApi.Handlers
         }
 
         /// <summary>
-        /// Get matching item if it exists in order already. 
+        /// Get matching item if it exists in order already.
         /// Must match all of the following: article number, renewal period and "DomainName" custom attributes if it exists.
         /// </summary>
         /// <param name="order">The order to check</param>
@@ -87,7 +87,11 @@ namespace Atomia.Store.PublicBillingApi.Handlers
             PublicOrderItem existingOrderItem = null;
             var domainAttr = item.CartItem.CustomAttributes.FirstOrDefault(ca => ca.Name == "DomainName");
 
-            if (domainAttr != null)
+            // do not use "DomainName" custom attribute on hosting items for identification
+            var hostingCategories = new[] { "HostingPackage", "DNS" };
+            bool isHostingItem = hostingCategories.Intersect(item.Categories.Select(c => c.Name)).Count() > 0;
+
+            if (domainAttr != null && !isHostingItem)
             {
                 existingOrderItem = order.OrderItems.FirstOrDefault(orderItem =>
                     orderItem.ItemNumber == item.ArticleNumber &&
