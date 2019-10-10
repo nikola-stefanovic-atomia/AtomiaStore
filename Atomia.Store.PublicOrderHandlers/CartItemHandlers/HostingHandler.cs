@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Atomia.Web.Plugin.OrderServiceReferences.AtomiaBillingPublicService;
+using System.Text.RegularExpressions;
 
 namespace Atomia.Store.PublicOrderHandlers.CartItemHandlers
 {
@@ -26,11 +27,12 @@ namespace Atomia.Store.PublicOrderHandlers.CartItemHandlers
             var hostingPackageItems = orderContext.ItemData.Where(i => this.HandledCategories.Intersect(i.Categories.Select(c => c.Name)).Count() > 0);
 
             var customData = new List<PublicOrderItemProperty>();
+            var labelRegEx = new Regex(Common.RegularExpression.GetRegularExpressionForSubscriptionLabel());
 
             foreach (var item in hostingPackageItems)
             {
                 var labelValue = GetLabel(item);
-                if (!string.IsNullOrWhiteSpace(labelValue))
+                if (!string.IsNullOrWhiteSpace(labelValue) && labelRegEx.IsMatch(labelValue))
                 {
                     customData.Add(new PublicOrderItemProperty { Name = "Label", Value = labelValue });
                 }

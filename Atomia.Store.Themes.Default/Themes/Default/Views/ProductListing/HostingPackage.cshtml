@@ -21,7 +21,9 @@
 </div>
 
 <div data-bind="visible: connectedDomainStatus.domainNameOptionsCount() == 0 && products.isPackageLabelEnabled">
-    @Html.Partial("_CustomLabel")
+    <!-- ko with: label -->
+    @{ Html.RenderPartial("_CustomLabel", Model); }
+    <!-- /ko -->
 </div>
 
 @Html.Partial("_Actions", Model)
@@ -30,8 +32,6 @@
     @{ Html.RenderPartial("_Scripts", Model); }
 
     @{ Html.RenderPartial("_DomainConnectionScripts", Model); }
-
-    @{ Html.RenderPartial("_CustomLabelScripts", Model); }
 
     @{ Html.RenderPartial("_ExtraScripts", Model); }
 }

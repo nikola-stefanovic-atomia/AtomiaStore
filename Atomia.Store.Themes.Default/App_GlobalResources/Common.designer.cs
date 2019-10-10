@@ -747,6 +747,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Package name must contain alphanumerical characters..
+        /// </summary>
+        internal static string ErrorInvalidLabel {
+            get {
+                return ResourceManager.GetString("ErrorInvalidLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Renewal period format is N-MONTH or N-YEAR.
         /// </summary>
         internal static string ErrorPreselectRenewalPeriod {
@@ -1206,7 +1215,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You can set a name for the web hosting package..
+        ///   Looks up a localized string similar to You can set a custom name for this package..
         /// </summary>
         internal static string PackageNameDescription {
             get {
@@ -1214,7 +1223,7 @@ namespace Resources {
             }
         }
         
-        /// <summary>        
+        /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
         internal static string Password {
