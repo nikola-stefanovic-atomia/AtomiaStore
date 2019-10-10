@@ -30,6 +30,7 @@ Atomia.ViewModels = Atomia.ViewModels || {};
         self.singleSelection = false;
         self.products = ko.observableArray();
         self.selectedProduct = ko.observable();
+        self.isPackageLabelEnabled = false;
         /** Check if product is in cart. */
         self.productIsSelected = ko.pureComputed(function() {
             return _.any(self.products(), function (product) {

@@ -744,7 +744,7 @@
     <value>Package name</value>
   </data>
   <data name="PackageNameDescription" xml:space="preserve">
-    <value>You can set a name for the web hosting package.</value>
+    <value>You can set a custom name for this package.</value>
   </data>
   <data name="ExistingCustomerTitle" xml:space="preserve">
     <value>Existing customer</value>
@@ -769,5 +769,8 @@
   </data>
   <data name="ErrorConfirm" xml:space="preserve">
     <value>You must confirm the Terms of Service.</value>
+  </data>
+  <data name="ErrorInvalidLabel" xml:space="preserve">
+    <value>Package name must contain alphanumerical characters.</value>
   </data>
 </root>

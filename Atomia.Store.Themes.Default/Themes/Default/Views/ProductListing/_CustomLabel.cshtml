@@ -1,19 +1,9 @@
-﻿<h4>@Html.CommonResource("PackageName")</h4>
-<p>@Html.CommonResource("PackageNameDescription")</p>
-<div class="formrow">
-    <h5>
-        <label for="master">
-            @Html.CommonResource("PackageName"):
-        </label>
-    </h5>
-    <div class="col2row" data-bind="component: {
-        name: 'custom-label',
-        params: {
-            cart: Atomia.VM.cart,
-            selectedItem: Atomia.VM.products.selectedProduct
-        }
-    }">
+﻿@model Atomia.Store.AspNetMvc.Models.ProductListingViewModel
 
-    </div>
-    <br class="clear">
-</div>
+<h4>@Html.CommonResource("PackageName")</h4>
+<p>@Html.CommonResource("PackageNameDescription")</p>
+@using (Html.BeginForm("Label", "", FormMethod.Post, new { id = "LabelForm", data_bind = "submit: preventSubmit" }))
+{
+    @Html.FormRowFor(m => m.Label.Value, Html.CommonResource("PackageName") + ":", false, string.Empty, "value: selectedItemLabel")
+}
+<br class="clear">

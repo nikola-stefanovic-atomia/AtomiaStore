@@ -127,6 +127,7 @@
     <Compile Include="Models\CounterTypeModel.cs" />
     <Compile Include="Models\ExistingCustomerContactData.cs" />
     <Compile Include="Models\ExistingCustomerContactModel.cs" />
+    <Compile Include="Models\LabelViewModel.cs" />
     <Compile Include="Models\NoridDeclarationModel.cs" />
     <Compile Include="Models\CustomerOrderAccountSelectorModel.cs" />
     <Compile Include="Models\OrderFlowModel.cs" />

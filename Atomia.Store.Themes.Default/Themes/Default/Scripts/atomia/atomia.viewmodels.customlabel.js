@@ -17,7 +17,7 @@ Atomia.ViewModels = Atomia.ViewModels || {};
         self.selectedItemLabel = ko.observable();
         self.uniqueId = _.uniqueId('label-');
 
-        /** Set domain name if 'SelectedItem' already has domain name associated. */
+        /** Set label from cart to 'SelectedItem'. */
         self.setInitialLabel = function setInitialLabel() {
             var selectedItem = self.selectedItem(),
                 itemInCart;
@@ -45,6 +45,10 @@ Atomia.ViewModels = Atomia.ViewModels || {};
                 cart.removeLabel(selectedItem());
             }
         }
+
+        self.preventSubmit = function () {
+            return false;
+        };
 
         /** Update hosting label when an hosting item ('addedItem') is added to cart. */
         utils.subscribe('cart:add', function(addedItem) {

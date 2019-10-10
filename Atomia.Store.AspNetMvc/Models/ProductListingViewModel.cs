@@ -36,5 +36,10 @@ namespace Atomia.Store.AspNetMvc.Models
                     && packageProvider.IsMultiPackageEnabled();
             }
         }
+
+        /// <summary>
+        /// Name of <see cref="Atomia.Store.AspNetMvc.Models.LabelViewModel" to use. />
+        /// </summary>
+        public virtual LabelViewModel Label { get; set; }
     }
 }
