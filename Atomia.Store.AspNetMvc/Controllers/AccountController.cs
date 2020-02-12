@@ -91,11 +91,12 @@ namespace Atomia.Store.AspNetMvc.Controllers
         /// Norid terms of service page.
         /// </summary>
         [HttpGet]
-        public ActionResult NoridTermsOfService(string domains, string companyName, string companyNumber, string name, string time)
+        public ActionResult NoridTermsOfService(string domains, string domainsIDN, string applicantName, string applicantNumber, string name, string time)
         {
             ViewBag.domains = domains ?? "";
-            ViewBag.companyName = companyName ?? "";
-            ViewBag.companyNumber = companyNumber ?? "";
+            ViewBag.domainsIDN = domainsIDN ?? "";
+            ViewBag.applicantName = applicantName ?? "";
+            ViewBag.applicantNumber = applicantNumber ?? "";
             ViewBag.name = name ?? "";
             ViewBag.time = time ?? "";
             return View();

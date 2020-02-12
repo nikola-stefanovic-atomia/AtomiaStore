@@ -72,17 +72,26 @@ Atomia.ViewModels = Atomia.ViewModels || {};
         });
 
         self.openDeclaration = function () {
-            var companyName = $("#MainContact_CompanyInfo_CompanyName").val();
-            companyName = companyName === undefined ? "" : companyName;
-            var companyNumber = account.mainContactIsCompany() ? $("#MainContact_CompanyInfo_IdentityNumber").val() : $("#MainContact_IndividualInfo_IdentityNumber").val();
-            companyNumber = companyNumber === undefined ? "" : companyNumber;
+            var applicantName = account.mainContactIsCompany() ? $("#MainContact_CompanyInfo_CompanyName").val() : $("#MainContact_FirstName").val() + " " + $("#MainContact_LastName").val();
+            applicantName = applicantName === undefined ? "" : applicantName;
+            var applicantNumber = account.mainContactIsCompany() ? $("#MainContact_CompanyInfo_IdentityNumber").val() : $("#MainContact_IndividualInfo_IdentityNumber").val();
+            applicantNumber = applicantNumber === undefined ? "" : applicantNumber;
 
             var noDomains = [];
             var indexes = self.getNoridDomainIndexes();
             for (var i = 0; i < indexes.length; i++) {
                 noDomains.push(cart.cartItems()[indexes[i]].attrs["domainName"]);
             }
-            window.open('/Account/NoridTermsOfService?name=' + self.noridSignedName() + '&companyName=' + companyName + '&companyNumber=' + companyNumber + '&domains=' + noDomains.join('|') + '&time=' + self.getTime(true), 'mywindow', 'status=1');
+
+            var noDomainsIDN = [];
+            for (var i = 0; i < noDomains.length; i++) {
+                var IDN = punycode.toASCII(noDomains[i]);
+                if (IDN !== noDomains[i]) {
+                    noDomainsIDN.push(IDN);
+                }
+            }
+
+            window.open('/Account/NoridTermsOfService?name=' + self.noridSignedName() + '&applicantName=' + applicantName + '&applicantNumber=' + applicantNumber + '&domains=' + noDomains.join('|') + '&domainsIDN=' + noDomainsIDN.join('|') + '&time=' + self.getTime(true), 'mywindow', 'status=1');
         };
 
         self.getTime = function getTime(timestamp) {
