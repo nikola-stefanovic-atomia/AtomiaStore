@@ -177,9 +177,10 @@ namespace Atomia.Store.Themes.Default
             container.RegisterType<OrderDataHandler, Atomia.Store.PublicOrderHandlers.CartItemHandlers.DefaultHandler>("Default");
             container.RegisterType<OrderDataHandler, Atomia.Store.PublicOrderHandlers.CartItemHandlers.SetupFeesHandler>("SetupFees");
             container.RegisterType<OrderDataHandler, Atomia.Store.PublicOrderHandlers.CartItemHandlers.RemovePostOrderHandler>("RemovePostOrder");
+            container.RegisterType<OrderDataHandler, PublicOrderHandlers.PackageGroupIdHandler>("PackageGroupId");
 
             container.RegisterType<IOrderPlacementService, Atomia.Store.PublicBillingApi.Adapters.OrderPlacementService>();
-            
+
             var orderDataHandlerParams = GetOrderDataHandlerParams();
 
             bool loginAfterOrder;
@@ -212,7 +213,7 @@ namespace Atomia.Store.Themes.Default
         private static ResolvedArrayParameter<OrderDataHandler> GetOrderDataHandlerParams()
         {
             // We resolve the parameters manually to control the order the OrderHandlers are applied.
-            var orderDataHandlerParams = new ResolvedArrayParameter<OrderDataHandler>(
+            return new ResolvedArrayParameter<OrderDataHandler>(
                 new ResolvedParameter<OrderDataHandler>("Reseller"),
                 new ResolvedParameter<OrderDataHandler>("LanguageHandler"),
                 new ResolvedParameter<OrderDataHandler>("Currency"),
@@ -227,6 +228,8 @@ namespace Atomia.Store.Themes.Default
                 new ResolvedParameter<OrderDataHandler>("OwnDomain"),
                 new ResolvedParameter<OrderDataHandler>("SetupFees"),
 
+                // PackageGroupId handler will add package group id to all order lines, if the multipackage is enabled.
+                new ResolvedParameter<OrderDataHandler>("PackageGroupId"),
                 // This is a good position for TLD specific handlers.
 
                 // Default should be placed after all other handlers that add items form the cart to the order, or there is risk of adding the same item twice.
@@ -237,8 +240,6 @@ namespace Atomia.Store.Themes.Default
                 // RemovePostOrder should be placed last to make sure any added postal fees are removed, since they will be added by Atomia Billing.
                 new ResolvedParameter<OrderDataHandler>("RemovePostOrder")
             );
-
-            return orderDataHandlerParams;
         }
 
         /// <summary>

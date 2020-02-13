@@ -86,7 +86,6 @@ namespace Atomia.Store.PublicBillingApi.Handlers
         {
             PublicOrderItem existingOrderItem = null;
             var domainAttr = item.CartItem.CustomAttributes.FirstOrDefault(ca => ca.Name == "DomainName");
-
             if (domainAttr != null)
             {
                 existingOrderItem = order.OrderItems.FirstOrDefault(orderItem =>
