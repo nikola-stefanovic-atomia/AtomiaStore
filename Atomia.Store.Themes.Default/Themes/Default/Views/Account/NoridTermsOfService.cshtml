@@ -48,15 +48,31 @@
         Som abonnent plikter jeg å følge de abonnementsvilkårene som til enhver tid gjelder og holde meg oppdatert om endringer i disse. Et domeneabonnement må fornyes årlig. Ved å betale årsavgiften, godtar jeg de vilkårene som gjelder.
     </p>
     <div style="border-style: solid; border-width: 2px; padding: 5px">
-        <b>For bedrifter og andre virksomheter</b><br>
+        @if (ViewBag.isCompany)
+        {
+            <b>For bedrifter og andre virksomheter</b><br>
+        }
+        else
+        {
+            <b>For privatpersoner</b><br>
+        }
+
         Domenenavn: <span>@ViewBag.domains.ToString().Replace("|", ", ")</span><br>
         @if (!string.IsNullOrEmpty(ViewBag.domainsIDN.ToString()))
         {
             <div>Domenenavn ACE-form: @ViewBag.domainsIDN.ToString().Replace("|", ", ")</div>
         }
-        Søkers navn: @ViewBag.applicantName.ToString()<br>
-        ID-nummer (org.nr eller PID): @ViewBag.applicantNumber.ToString()<br>
-        Navn på personen som avgir samtykke: @ViewBag.name.ToString()<br>
+        Abonnentens navn: @ViewBag.applicantName.ToString()<br>
+
+        @if (ViewBag.isCompany)
+        {
+            <div>Org.nr.: @ViewBag.applicantNumber.ToString()</div>
+            <div>Navn på personen som avgir samtykke: @ViewBag.name.ToString()</div>
+        }
+        else
+        {
+            <div>Person-ID: @ViewBag.applicantNumber.ToString()</div>
+        }
     </div>
     <br>
     <span style="float:right">Versjonsnummer: @Html.CommonResource("NoridVersion")</span>

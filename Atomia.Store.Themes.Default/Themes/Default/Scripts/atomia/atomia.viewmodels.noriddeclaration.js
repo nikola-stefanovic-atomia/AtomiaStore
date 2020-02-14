@@ -76,11 +76,13 @@ Atomia.ViewModels = Atomia.ViewModels || {};
             applicantName = applicantName === undefined ? "" : applicantName;
             var applicantNumber = account.mainContactIsCompany() ? $("#MainContact_CompanyInfo_IdentityNumber").val() : $("#MainContact_IndividualInfo_IdentityNumber").val();
             applicantNumber = applicantNumber === undefined ? "" : applicantNumber;
+            var customerType = account.mainContactIsCompany() ? "company" : "individual";
 
             var noDomains = [];
             var indexes = self.getNoridDomainIndexes();
             for (var i = 0; i < indexes.length; i++) {
-                noDomains.push(cart.cartItems()[indexes[i]].attrs["domainName"]);
+                let domainName = cart.cartItems()[indexes[i]].attrs["domainName"];
+                noDomains.push(punycode.toUnicode(domainName));
             }
 
             var noDomainsIDN = [];
@@ -91,7 +93,8 @@ Atomia.ViewModels = Atomia.ViewModels || {};
                 }
             }
 
-            window.open('/Account/NoridTermsOfService?name=' + self.noridSignedName() + '&applicantName=' + applicantName + '&applicantNumber=' + applicantNumber + '&domains=' + noDomains.join('|') + '&domainsIDN=' + noDomainsIDN.join('|') + '&time=' + self.getTime(true), 'mywindow', 'status=1');
+            window.open('/Account/NoridTermsOfService?name=' + self.noridSignedName() + '&applicantName=' + applicantName + '&applicantNumber=' + applicantNumber +
+                '&domains=' + noDomains.join('|') + '&domainsIDN=' + noDomainsIDN.join('|') + '&time=' + self.getTime(true) + '&customerType=' + customerType, 'mywindow', 'status=1');
         };
 
         self.getTime = function getTime(timestamp) {
