@@ -62,15 +62,16 @@
         {
             <div>Domenenavn ACE-form: @ViewBag.domainsIDN.ToString().Replace("|", ", ")</div>
         }
-        Abonnentens navn: @ViewBag.applicantName.ToString()<br>
 
         @if (ViewBag.isCompany)
         {
+            <div>Abonnentens navn: @ViewBag.applicantName.ToString()</div>
             <div>Org.nr.: @ViewBag.applicantNumber.ToString()</div>
             <div>Navn på personen som avgir samtykke: @ViewBag.name.ToString()</div>
         }
         else
         {
+            <div>Abonnentens navn: @ViewBag.name.ToString()</div>
             <div>Person-ID: @ViewBag.applicantNumber.ToString()</div>
         }
     </div>
