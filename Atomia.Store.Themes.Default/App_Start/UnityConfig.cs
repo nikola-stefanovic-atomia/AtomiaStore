@@ -228,12 +228,13 @@ namespace Atomia.Store.Themes.Default
                 new ResolvedParameter<OrderDataHandler>("OwnDomain"),
                 new ResolvedParameter<OrderDataHandler>("SetupFees"),
 
-                // PackageGroupId handler will add package group id to all order lines, if the multipackage is enabled.
-                new ResolvedParameter<OrderDataHandler>("PackageGroupId"),
                 // This is a good position for TLD specific handlers.
 
                 // Default should be placed after all other handlers that add items form the cart to the order, or there is risk of adding the same item twice.
                 new ResolvedParameter<OrderDataHandler>("Default"),
+
+                // PackageGroupId handler will add package group id to all order lines, if the multipackage is enabled. This handler should be placed after Default handler because PackageGroupId should be added to all items in the order.
+                new ResolvedParameter<OrderDataHandler>("PackageGroupId"),
 
                 // This is a good position for handlers that add extra items depending on other items in cart, e.g. like HST-APPY in old order page.
 
