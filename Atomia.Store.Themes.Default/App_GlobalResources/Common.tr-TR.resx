@@ -746,4 +746,7 @@
   <data name="CustomerLogin" xml:space="preserve">
     <value>Oturum aç</value>
   </data>
+  <data name="RecaptchaVerificationFaild" xml:space="preserve">
+    <value>Robot olmadığından emin ol.</value>
+  </data>
 </root>

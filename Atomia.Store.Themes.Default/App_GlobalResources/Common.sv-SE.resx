@@ -755,4 +755,7 @@
   <data name="ErrorConfirm" xml:space="preserve">
     <value>Du måste läsa och godkänna alla avtal.</value>
   </data>
+  <data name="RecaptchaVerificationFaild" xml:space="preserve">
+    <value>Kontrollera att du inte är en robot.</value>
+  </data>
 </root>

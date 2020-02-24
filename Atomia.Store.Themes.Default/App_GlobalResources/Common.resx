@@ -764,4 +764,7 @@
   <data name="ErrorConfirm" xml:space="preserve">
     <value>You must confirm the Terms of Service.</value>
   </data>
+  <data name="RecaptchaVerificationFaild" xml:space="preserve">
+    <value>Please, verify that you are not a robot.</value>
+  </data>
 </root>

@@ -287,6 +287,7 @@
     <Content Include="Themes\Default\Scripts\atomia\atomia.ko.vpsslider-binding.js" />
     <Content Include="Themes\Default\Scripts\atomia\atomia.utils.eventhandlers.js" />
     <Content Include="Themes\Default\Scripts\atomia\atomia.viewmodels.campaign.js" />
+    <Content Include="Themes\Default\Scripts\atomia\atomia.viewmodels.recaptcha.js" />
     <Content Include="Themes\Default\Scripts\atomia\atomia.viewmodels.checkout.js" />
     <Content Include="Themes\Default\Scripts\atomia\atomia.viewmodels.currencyselector.js" />
     <Content Include="Themes\Default\Scripts\atomia\atomia.viewmodels.customerorderaccountselector.js" />
