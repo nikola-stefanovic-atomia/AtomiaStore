@@ -178,6 +178,7 @@ namespace Atomia.Store.Themes.Default
             container.RegisterType<OrderDataHandler, Atomia.Store.PublicOrderHandlers.CartItemHandlers.SetupFeesHandler>("SetupFees");
             container.RegisterType<OrderDataHandler, Atomia.Store.PublicOrderHandlers.CartItemHandlers.RemovePostOrderHandler>("RemovePostOrder");
             container.RegisterType<OrderDataHandler, Atomia.Store.PublicOrderHandlers.CartItemHandlers.HostingHandler>("HostingHandler");
+            container.RegisterType<OrderDataHandler, PublicOrderHandlers.PackageGroupIdHandler>("PackageGroupId");
 
             container.RegisterType<IOrderPlacementService, Atomia.Store.PublicBillingApi.Adapters.OrderPlacementService>();
             
@@ -213,7 +214,7 @@ namespace Atomia.Store.Themes.Default
         private static ResolvedArrayParameter<OrderDataHandler> GetOrderDataHandlerParams()
         {
             // We resolve the parameters manually to control the order the OrderHandlers are applied.
-            var orderDataHandlerParams = new ResolvedArrayParameter<OrderDataHandler>(
+            return new ResolvedArrayParameter<OrderDataHandler>(
                 new ResolvedParameter<OrderDataHandler>("Reseller"),
                 new ResolvedParameter<OrderDataHandler>("LanguageHandler"),
                 new ResolvedParameter<OrderDataHandler>("Currency"),
@@ -234,13 +235,14 @@ namespace Atomia.Store.Themes.Default
                 // Default should be placed after all other handlers that add items form the cart to the order, or there is risk of adding the same item twice.
                 new ResolvedParameter<OrderDataHandler>("Default"),
 
+                // PackageGroupId handler will add package group id to all order lines, if the multipackage is enabled. This handler should be placed after Default handler because PackageGroupId should be added to all items in the order.
+                new ResolvedParameter<OrderDataHandler>("PackageGroupId"),
+
                 // This is a good position for handlers that add extra items depending on other items in cart, e.g. like HST-APPY in old order page.
 
                 // RemovePostOrder should be placed last to make sure any added postal fees are removed, since they will be added by Atomia Billing.
                 new ResolvedParameter<OrderDataHandler>("RemovePostOrder")
             );
-
-            return orderDataHandlerParams;
         }
 
         /// <summary>

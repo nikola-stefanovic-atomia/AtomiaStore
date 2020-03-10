@@ -6,7 +6,7 @@ using Atomia.Store.Core;
 namespace Atomia.Store.WebBase.HtmlHelpers
 {
     /// <summary>
-    /// HTML helper extensions that get resource strings only from Common.resx in App_GlobalResources 
+    /// HTML helper extensions that get resource strings only from Common.resx in App_GlobalResources
     /// using  localization extensions from Atomia.Web.Base
     /// </summary>
     public static class CommonResourcesHelper
@@ -23,6 +23,20 @@ namespace Atomia.Store.WebBase.HtmlHelpers
 
             return String.IsNullOrEmpty(resource)
                 ? LocalizationHelpers.Resource(htmlhelper, "Common," + expression, args)
+                : resource;
+        }
+
+        /// <summary>
+        /// Gets escaped resource string from App_GlobalResources/Common.resx or from theme common folder.
+        /// </summary>
+        public static string GlobalCommonResource(this Controller controller, string expression, params object[] args)
+        {
+            var theme = themeNamesProvider.GetCurrentThemeName();
+            var themeClass = theme + "Common,";
+            var resource = LocalizationHelpers.GlobalResource(themeClass + expression, theme);
+
+            return string.IsNullOrWhiteSpace(resource)
+                ? LocalizationHelpers.Resource(controller, "Common," + expression, args)
                 : resource;
         }
 

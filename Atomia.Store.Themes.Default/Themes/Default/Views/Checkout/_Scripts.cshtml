@@ -3,6 +3,21 @@
 @{
     Html.EnableClientValidation();
     var checkVAT = ViewBag.CheckVAT ? "true" : "false";
+    var recaptchaEnabled = ViewBag.RecaptchaEnabled != null && ViewBag.RecaptchaEnabled;
+}
+
+@if (recaptchaEnabled)
+{
+    <script>
+        var language = Atomia.VM.languageSelector.selectedLanguage().shortName.toLowerCase();
+        var scriptUrl = 'https://www.google.com/recaptcha/api.js?onload=render&hl=';
+
+        $("body").append($("<script />", {
+            src: scriptUrl + language,
+            async: true,
+            defer: true
+        }));
+    </script>
 }
 
 <script type="text/javascript">
@@ -14,9 +29,7 @@
     Atomia.VM.payWithInvoice.invoiceType('email');
 
     Atomia.VM.paymentProfile = new Atomia.ViewModels.PaymentProfileModel('@Model.SelectedPaymentMethodId', @Html.Raw(Model.PaymentMethodsWithPaymentProfileToJson()));
-
     Atomia.VM.campaignCode = new Atomia.ViewModels.CampaignCodeModel(Atomia.VM.cart);
-
     Atomia.VM.vatValidation = new Atomia.ViewModels.VatValidationModel(Atomia.VM.cart, @checkVAT);
 
     var termsOfServices = JSON.parse('@(new HtmlString(Json.Encode(Model.TermsOfService)))');
@@ -26,4 +39,10 @@
     {
         @: Atomia.VM.vatValidation.validateVatNumber();
     }
+
+    @if (recaptchaEnabled)
+    {
+        @: Atomia.VM.recaptcha = new Atomia.ViewModels.Recaptcha('reCaptchaPlaceholder', '@ViewBag.RecaptchaSiteKey');
+    }
 </script>
+

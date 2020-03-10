@@ -14,44 +14,70 @@
             background: #ffffff;
             color: #000000;
             font-family: Arial, Verdana;
+            margin: 60px;
         }
         -->
     </style>
 </head>
 <body>
-    <img src="/Themes/Default/Content/img/atomia_2/no_svart.png" style="clear:both;" alt="Norid .no" title="Norid .no">
-    <h1>Egenerklæring</h1>
+    <img src="/Themes/Default/Content/img/atomia_2/no_svart.png" style="clear:both; width: 30%" alt="Norid .no" title="Norid .no">
+    <h1>Egenerklæring ved bestilling av domenenavn</h1>
     <p>
-        Ved signering av denne erklæringen, binder abonnenten seg til vilkårene for å registrere et domenenavn under .no. Erklæringen og det regelverket som til enhver tid gjelder utgjør til sammen kontrakten mellom UNINETT Norid AS, senere kalt Norid, og abonnenten.
+        Denne erklæringen og abonnementsvilkårene som til enhver tid gjelder, utgjør til sammen kontrakten mellom Norid AS, som driver registeret for norske domenenavn, og deg som abonnent. Når du signerer erklæringen, binder du deg til vilkårene for å registrere et norsk domenenavn (domenenavn som slutter på . no).
     </p>
     <p>
-        Jeg erklærer med dette at registrering og/eller bruk av domenenavnet<br>
-        - ikke er i strid med regelverket, se http://www.norid.no/navnepolitikk.html <br>
+        Jeg erklærer med dette at registrering og/eller bruk av domenenavnet<br><br>
+
+        - ikke er i strid med abonnementsvilkårene, se https://www.norid.no/no/om-domenenavn/regelverk-for-no/ <br>
         - etter min kunnskap ikke medfører urettmessige inngrep i tredjeparts registrerte eller uregistrerte rettigheter til navnet<br>
         - ikke er i strid med norsk rett<br>
         - ikke uberettiget gir inntrykk av å angå offentlig forvaltning eller myndighetsutøvelse
     </p>
     <p>
-        Jeg har satt meg inn i de kravene som regelverket stiller i forbindelse med registrering og bruk av domenenavnet, og er kjent med mine rettigheter og plikter.
+        Jeg har satt meg inn i de kravene som gjelder i forbindelse med registrering og bruk av domenenavnet og er kjent med mine rettigheter og plikter.
     </p>
     <p>
-        Jeg er kjent med at<br>
+        Jeg er kjent med at<br><br>
+
         - Norid samler inn og behandler opplysninger om domeneabonnementer for å kunne oppfylle avtalen med meg som abonnent og forvalte det norske toppdomenet på en måte som bidrar til robust drift av internett som infrastruktur.<br>
-        - Norid driver en oppslagstjeneste der publikum kan slå opp et domenenavn og få informasjon om abonnementet, meg som abonnent, teknisk kontakt og teknisk oppsett, samt hvem som er forhandler for domenenavnet. Som abonnent har jeg full adgang til å oppgi en anonymisert e-postadresse i kontaktfelt så lenge adressen kan brukes til å kontakte meg.<br>
-        - klager på min registrering kan behandles av Domeneklagenemnda i henhold til de regler og prosedyrer som følger av regelverket. Som abonnent blir jeg bundet av Domeneklagenemndas avgjørelse, og jeg må dekke klagegebyret hvis klager får medhold.<br>
-        - Norid kan trekke tilbake et registrert domenenavn når det er åpenbart at tildelingen er i strid med forhold som er nevnt i denne erklæringen, eller som på annen måte er i strid med regelverket eller formålet bak regelverket.
+        - Norid driver en oppslagstjeneste der publikum kan slå opp et domenenavn og få informasjon om abonnementet, om meg som abonnent, om teknisk kontakt og teknisk oppsett, samt hvem som er forhandler for domenenavnet. Som abonnent kan jeg oppgi en anonymisert e-postadresse så lenge adressen kan brukes til å kontakte meg.<br>
+        - klager på min registrering kan behandles av Domeneklagenemnda i henhold til regler og prosedyrer som følger av abonnementsvilkårene. Som abonnent blir jeg bundet av Domeneklagenemndas avgjørelse, og jeg må dekke klagegebyret hvis klager får medhold.<br>
+        - Norid kan trekke tilbake et registrert domenenavn når det er åpenbart at tildelingen er i strid med forhold som er nevnt i denne erklæringen, eller som på annen måte er i strid med abonnementsvilkårene. 
     </p>
     <p>
-        Som abonnent plikter jeg å følge det regelverket som til en hver tid gjelder, og holde meg oppdatert om endringer i regelverket. Et domeneabonnement må fornyes årlig. Ved å betale årsavgiften, godtar jeg det regelverket som gjelder.
+        Som abonnent plikter jeg å følge de abonnementsvilkårene som til enhver tid gjelder og holde meg oppdatert om endringer i disse. Et domeneabonnement må fornyes årlig. Ved å betale årsavgiften, godtar jeg de vilkårene som gjelder.
     </p>
-    <div>
-        Domenenavn: <div style="margin:-18px 0 0 100px">@ViewBag.domains.ToString().Replace("|", "<br>")</div><br><br>
-        Søkers navn: @ViewBag.companyName.ToString() <br><br>
-        ID-nummer (org.nr eller PID): @ViewBag.companyNumber.ToString()<br><br>
-        Navn på personen som avgir samtykke: @ViewBag.name.ToString()<br><br>
-        <span style="float:right">Versjonsnummer: @Html.CommonResource("NoridVersion")</span>
-        Tidsstempel: @ViewBag.time.ToString()
+    <div style="border-style: solid; border-width: 2px; padding: 5px">
+        @if (ViewBag.isCompany)
+        {
+            <b>For bedrifter og andre virksomheter</b><br>
+        }
+        else
+        {
+            <b>For privatpersoner</b><br>
+        }
+
+        Domenenavn: <span>@ViewBag.domains.ToString().Replace("|", ", ")</span><br>
+        @if (!string.IsNullOrEmpty(ViewBag.domainsIDN.ToString()))
+        {
+            <div>Domenenavn ACE-form: @ViewBag.domainsIDN.ToString().Replace("|", ", ")</div>
+        }
+
+        @if (ViewBag.isCompany)
+        {
+            <div>Abonnentens navn: @ViewBag.applicantName.ToString()</div>
+            <div>Org.nr.: @ViewBag.applicantNumber.ToString()</div>
+            <div>Navn på personen som avgir samtykke: @ViewBag.name.ToString()</div>
+        }
+        else
+        {
+            <div>Abonnentens navn: @ViewBag.name.ToString()</div>
+            <div>Person-ID: @ViewBag.applicantNumber.ToString()</div>
+        }
     </div>
+    <br>
+    <span style="float:right">Versjonsnummer: @Html.CommonResource("NoridVersion")</span>
+    Tidsstempel: @ViewBag.time.ToString()
 
 </body>
 </html>

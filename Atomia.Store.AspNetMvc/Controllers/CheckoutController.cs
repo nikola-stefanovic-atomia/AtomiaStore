@@ -1,8 +1,11 @@
 ﻿using Atomia.Store.AspNetMvc.Filters;
+using Atomia.Store.AspNetMvc.Helpers;
 using Atomia.Store.AspNetMvc.Infrastructure;
 using Atomia.Store.AspNetMvc.Models;
 using Atomia.Store.Core;
+using Atomia.Store.WebBase.HtmlHelpers;
 using System;
+using System.Configuration;
 using System.Web.Mvc;
 
 namespace Atomia.Store.AspNetMvc.Controllers
@@ -33,8 +36,13 @@ namespace Atomia.Store.AspNetMvc.Controllers
             cartPricingService.CalculatePricing(cart);
 
             // If VAT number was submitted, indicate a VAT check should be made
-            ViewBag.CheckVAT = !String.IsNullOrEmpty(vatDataProvider.VatNumber);
-            
+            ViewBag.CheckVAT = !string.IsNullOrEmpty(vatDataProvider.VatNumber);
+            if (RecaptchaHelper.IsRecaptchaEnabled())
+            {
+                ViewBag.RecaptchaEnabled = true;
+                ViewBag.RecaptchaSiteKey = RecaptchaHelper.GetSiteKey();
+            }
+
             var model = DependencyResolver.Current.GetService<CheckoutViewModel>();
             ViewData["formHasErrors"] = false;
 
@@ -53,6 +61,14 @@ namespace Atomia.Store.AspNetMvc.Controllers
             var contactDataCollection = contactDataProvider.GetContactData();
 
             ViewBag.CheckVAT = !String.IsNullOrEmpty(vatDataProvider.VatNumber);
+
+            if (RecaptchaHelper.IsRecaptchaEnabled())
+            {
+                if (!RecaptchaHelper.IsResponseValid(Request.Form["g-recaptcha-response"]))
+                {
+                    ModelState.AddModelError("recaptcha", this.GlobalCommonResource("RecaptchaVerificationFaild"));
+                }
+            }
 
             if (cart.IsEmpty())
             {
@@ -78,7 +94,7 @@ namespace Atomia.Store.AspNetMvc.Controllers
 
                 var orderContext = new OrderContext(cart, contactDataCollection, paymentData, new object[] { Request });
                 var result = orderPlacementService.PlaceOrder(orderContext);
-                
+
                 if (result.RedirectUrl == urlProvider.SuccessUrl)
                 {
                     contactDataProvider.ClearContactData();
@@ -86,6 +102,12 @@ namespace Atomia.Store.AspNetMvc.Controllers
                 }
 
                 return Redirect(result.RedirectUrl);
+            }
+
+            if (RecaptchaHelper.IsRecaptchaEnabled())
+            {
+                ViewBag.RecaptchaEnabled = true;
+                ViewBag.RecaptchaSiteKey = RecaptchaHelper.GetSiteKey();
             }
 
             ViewData["formHasErrors"] = true;
@@ -112,7 +134,7 @@ namespace Atomia.Store.AspNetMvc.Controllers
         }
 
         /// <summary>
-        /// Failed payment page. 
+        /// Failed payment page.
         /// </summary>
         [HttpGet]
         public ActionResult Failure()

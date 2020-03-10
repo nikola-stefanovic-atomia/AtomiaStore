@@ -36,15 +36,15 @@ embed {max-width: 100%;}
 /* force a vertical scrollbar to prevent a jumpy page */
 html {overflow-y: scroll;}
 
-/* we use a lot of ULs that aren't bulleted. 
+/* we use a lot of ULs that aren't bulleted.
 	don't forget to restore the bullets within content. */
 ul {list-style: none;}
 
 blockquote, q {quotes: none;}
 
-blockquote:before, 
-blockquote:after, 
-q:before, 
+blockquote:before,
+blockquote:after,
+q:before,
 q:after {content: ''; content: none;}
 
 a {margin: 0; padding: 0; font-size: 100%; vertical-align: baseline; background: transparent;}
@@ -82,7 +82,7 @@ small {font-size: 85%;}
 
 strong {font-weight: bold;}
 
-td, td img {vertical-align: top;} 
+td, td img {vertical-align: top;}
 
 /* Make sure sup and sub don't mess with your line-heights http://gist.github.com/413930 */
 sub, sup {font-size: 75%; line-height: 0; position: relative;}
@@ -94,10 +94,10 @@ pre, code, kbd, samp {font-family: monospace, sans-serif;}
 
 /* hand cursor on clickable elements */
 .clickable,
-label, 
-input[type=button], 
-input[type=submit], 
-input[type=file], 
+label,
+input[type=button],
+input[type=submit],
+input[type=file],
 button {cursor: pointer;}
 
 /* Webkit browsers add a 2px margin outside the chrome of form elements */
@@ -106,18 +106,18 @@ button, input, select, textarea {margin: 0;}
 /* make buttons play nice in IE */
 button,
 input[type=button] {width: auto; overflow: visible;}
- 
+
 /* scale images in IE7 more attractively */
 .ie7 img {-ms-interpolation-mode: bicubic;}
 
-/* prevent BG image flicker upon hover 
+/* prevent BG image flicker upon hover
    (commented out as usage is rare, and the filter syntax messes with some pre-processors)
 .ie6 html {filter: expression(document.execCommand("BackgroundImageCache", false, true));}
 */
 
 /* let's clear some floats */
-.clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }  
-.clearfix:after { clear: both; }  
+.clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
+.clearfix:after { clear: both; }
 .clearfix { zoom: 1; }
 
 /*\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\*/
@@ -542,7 +542,7 @@ p.errorinfo:before {
 	color: #fba621;
 	font-size: 1.4em;
 	vertical-align: top;
-	margin-right: 0.3em;	
+	margin-right: 0.3em;
 }
 */
 #cc-box {
@@ -561,7 +561,7 @@ p.errorinfo:before {
 	font-size: 1em;
 	width: 27.8em
 }
-.tags li, .tag {	
+.tags li, .tag {
 	font-family: 'Oswald', sans-serif;
 	text-transform: uppercase;
 	display: inline-block;
@@ -1153,7 +1153,7 @@ header li > a:hover, header li > span:hover, header li .opened, .addons li a.ope
 	cursor: pointer
 }
 .action-button .submenu:after, .action-menu > span:after {
-	
+
 }
 .action-button ul ul, .action-menu ul {
 	display: none;
@@ -1433,7 +1433,7 @@ header li > a:hover, header li > span:hover, header li .opened, .addons li a.ope
 	overflow: hidden;
 	height: 3em;
 	background-color: #fff;
-	transition: height .5s ease 0; 
+	transition: height .5s ease 0;
 	-webkit-transition: height .5s ease 0;
 	-moz-transition: height .5s ease 0;
 }
@@ -1488,7 +1488,7 @@ header li > a:hover, header li > span:hover, header li .opened, .addons li a.ope
 	-webkit-transform: rotateZ(180deg);
 	-moz-transform: rotateZ(180deg);
 	-ms-transform: rotateZ(180deg);
-	transition: all .5s ease 0; 
+	transition: all .5s ease 0;
 	-webkit-transition: all .5s ease 0;
 	-moz-transition: all .5s ease 0;
 }
@@ -1552,7 +1552,7 @@ header li > a:hover, header li > span:hover, header li .opened, .addons li a.ope
 	font-size: 1.2rem;
 	text-decoration: none;
 	color: rgba(255,255,255,0.55);
-	transition: all .5s ease 0; 
+	transition: all .5s ease 0;
 	-webkit-transition: all .5s ease 0;
 	-moz-transition: all .5s ease 0;
 }
@@ -2023,7 +2023,7 @@ li.not_available .domain, li.not_available .price {
 	position: relative
 }
 .card.selectable {
-	
+
 }
 .card.tight {
 	margin: 0
@@ -2156,7 +2156,7 @@ li.not_available .domain, li.not_available .price {
     font-weight: 700
 }
 .contact .nowrap span {
-    
+
 }
 
 /*\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\*/
@@ -2583,10 +2583,10 @@ button, input[type=submit] {
 	display: block
 }
 .action-button .previous {
-	
+
 }
 .action-button .next {
-	
+
 }
 .button.spinner:before {
 	-webkit-animation: rotateplane 1s infinite linear;
@@ -3155,7 +3155,7 @@ button, input[type=submit] {
 	background-color: inherit
 }
 .adv_combo_box li:nth-child(2n) {
-	
+
 }
 .adv_combo_box .title, .fancy-dropdown li > strong {
 	line-height: 1.2em;
@@ -3315,8 +3315,8 @@ h3.important_heading {
 
 /*!|                                                                                                                   MEDIA QUERY SMART PHONE                       */
 
-@media only screen 
-and (min-device-width : 320px) 
+@media only screen
+and (min-device-width : 320px)
 and (max-device-width : 480px) {
 	.margins {
 		width: auto;
@@ -3331,8 +3331,8 @@ and (max-device-width : 480px) {
 
 /*!|                                                                                                                          MEDIA QUERY IPAD                       */
 
-@media only screen 
-and (min-device-width : 768px) 
+@media only screen
+and (min-device-width : 768px)
 and (max-device-width : 1024px) {
 	.margins {
 		width: auto;
@@ -3347,7 +3347,7 @@ and (max-device-width : 1024px) {
 
 /*!|                                                                                                                  MEDIA QUERY SMALL SCREEN                       */
 
-@media only screen 
+@media only screen
 and (max-width : 1440px) {
 	html, .formrow > *, .data-row > *, .col_set > *, .addons li, .action-button ul > * { /* Reset sub element font size to default */
 		font-size: 12px;
@@ -3358,7 +3358,7 @@ and (max-width : 1440px) {
 
 /*!|                                                                                                                  MEDIA QUERY LARGE SCREEN                       */
 
-@media only screen 
+@media only screen
 and (min-width : 2000px) {
 	html, .formrow > *, .data-row > *, .col_set > *, .addons li, .action-button ul > * { /* Reset sub element font size to default */
 		font-size: 16px;
@@ -3374,4 +3374,8 @@ and (min-width : 2000px) {
 
 .store_banner {
 	height: 8rem;
+}
+
+#reCaptchaContainer {
+    padding-bottom: 4px;
 }

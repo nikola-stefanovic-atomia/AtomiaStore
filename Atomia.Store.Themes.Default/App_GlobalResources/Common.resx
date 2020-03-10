@@ -720,7 +720,7 @@
     <value>Signed Name</value>
   </data>
   <data name="NoridVersion" xml:space="preserve">
-    <value>3.0</value>
+    <value>3.1 / 2019-12-10</value>
   </data>
   <data name="Includes" xml:space="preserve">
     <value>Includes</value>
@@ -769,6 +769,9 @@
   </data>
   <data name="ErrorConfirm" xml:space="preserve">
     <value>You must confirm the Terms of Service.</value>
+  </data>
+  <data name="RecaptchaVerificationFaild" xml:space="preserve">
+    <value>Please, verify that you are not a robot.</value>
   </data>
   <data name="ErrorInvalidLabel" xml:space="preserve">
     <value>Package name must contain alphanumerical characters.</value>

@@ -2,9 +2,17 @@
 @{
     var orderFlow = (OrderFlowModel)ViewBag.OrderFlow;
     var routeValues = orderFlow.IsQueryStringBased ? new { flow = orderFlow.Name } : null;
+    var recaptchaEnabled = ViewBag.RecaptchaEnabled != null && ViewBag.RecaptchaEnabled;
 }
 
 <p class="actions" style="display: block;">
+    @if (recaptchaEnabled)
+    {
+        <div id="reCaptchaContainer">
+            <div id="reCaptchaPlaceholder"></div>
+        </div>
+    }
+
     <span class="button large disabled" data-bind="visible: Atomia.VM.termsOfService.disableCheckoutAction()">@Html.CommonResource("Back")</span>
     @Html.RouteLink(Html.CommonResource("Back"), orderFlow.CurrentStep.Previous, routeValues, new { id = "back_step", @class = "button large", style = "display: inline-block;", data_bind = "visible: !Atomia.VM.termsOfService.disableCheckoutAction()" })
     <button type="button" class="button disabled icn_" style="vertical-align:top;" data-bind="visible: !cart.isEmpty() && cart.hasHostingPackage() && vatValidation.initialCheckDone() && Atomia.VM.termsOfService.disableCheckoutAction()">@Html.CommonResource("Checkout")</button>

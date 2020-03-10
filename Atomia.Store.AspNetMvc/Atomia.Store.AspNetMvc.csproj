@@ -74,7 +74,10 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Solution\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
@@ -118,6 +121,7 @@
     <Compile Include="Filters\CurrencyFilter.cs" />
     <Compile Include="Filters\ThemeFilter.cs" />
     <Compile Include="Helpers\ConfigurationHelper.cs" />
+    <Compile Include="Helpers\RecaptchaHelper.cs" />
     <Compile Include="Infrastructure\GlobalOrderFlows.cs" />
     <Compile Include="Infrastructure\OrderFlow.cs" />
     <Compile Include="Infrastructure\OrderFlowCollection.cs" />
@@ -131,6 +135,7 @@
     <Compile Include="Models\NoridDeclarationModel.cs" />
     <Compile Include="Models\CustomerOrderAccountSelectorModel.cs" />
     <Compile Include="Models\OrderFlowModel.cs" />
+    <Compile Include="Models\RecaptchaResponse.cs" />
     <Compile Include="Models\SelectAttrsModel.cs" />
     <Compile Include="Models\SelectItemModel.cs" />
     <Compile Include="Models\SelectMultiModel.cs" />
@@ -193,6 +198,10 @@
     <ProjectReference Include="..\Atomia.Store.Core\Atomia.Store.Core.csproj">
       <Project>{3BA8FA31-210D-4DD6-841D-DBE457B96A8F}</Project>
       <Name>Atomia.Store.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atomia.Store.WebBase\Atomia.Store.WebBase.csproj">
+      <Project>{51B7C760-9389-482A-BE5B-AB67F846A380}</Project>
+      <Name>Atomia.Store.WebBase</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

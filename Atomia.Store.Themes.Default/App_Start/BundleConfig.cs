@@ -56,7 +56,8 @@ namespace Atomia.Store.Themes.Default
                     "~/Themes/Default/Scripts/atomia/atomia.viewmodels.vpscalculator.js",
                     "~/Themes/Default/Scripts/atomia/atomia.viewmodels.customlabel.js",
                     "~/Themes/Default/Scripts/atomia/atomia.viewmodels.existingcustomer.js",
-                    "~/Themes/Default/Scripts/atomia/atomia.viewmodels.customerorderaccountselector.js");
+                    "~/Themes/Default/Scripts/atomia/atomia.viewmodels.customerorderaccountselector.js",
+                    "~/Themes/Default/Scripts/atomia/atomia.viewmodels.recaptcha.js");
 
             var styleBundle = new StyleBundle(DEFAULT_STYLES_BUNDLE)
                 .Include(
